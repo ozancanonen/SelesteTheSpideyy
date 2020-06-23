@@ -7,6 +7,10 @@ public class TrapGround : MonoBehaviour
     [SerializeField] GameObject trapGroundsHere;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(trapGroundsHere);
+        if (collision.tag == "Player")
+        {
+            trapGroundsHere.SetActive(true);
+        }
+
     }
 }

@@ -118,7 +118,7 @@ public class Kamikaze : MonoBehaviour
     {
         if (col.gameObject.tag == "WebBullet")
         {
-            GetComponent<Animator>().SetTrigger("Explode");
+            GetComponent<Animator>().SetTrigger("Die");
         }
 
     }
