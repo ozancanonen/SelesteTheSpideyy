@@ -475,7 +475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ConfineMode: 0
   m_BoundingVolume: {fileID: 0}
-  m_BoundingShape2D: {fileID: 1595707241}
+  m_BoundingShape2D: {fileID: 0}
   m_ConfineScreenEdges: 1
   m_Damping: 1
 --- !u!114 &20309386
@@ -5328,7 +5328,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 75830454, guid: 53307db50e88183438e3a6d63f6d1982, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 77210439, guid: 53307db50e88183438e3a6d63f6d1982, type: 3}
       propertyPath: m_RootOrder
@@ -5336,7 +5336,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1574192351, guid: 53307db50e88183438e3a6d63f6d1982, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 57408655985738196, guid: 53307db50e88183438e3a6d63f6d1982,
         type: 3}
@@ -5352,12 +5352,12 @@ PrefabInstance:
     - target: {fileID: 1407171560529681355, guid: 53307db50e88183438e3a6d63f6d1982,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -70.76458
+      value: -73.39643
       objectReference: {fileID: 0}
     - target: {fileID: 1407171560529681355, guid: 53307db50e88183438e3a6d63f6d1982,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -75.34806
+      value: -74.95996
       objectReference: {fileID: 0}
     - target: {fileID: 1407171560529681355, guid: 53307db50e88183438e3a6d63f6d1982,
         type: 3}
@@ -5667,12 +5667,12 @@ PrefabInstance:
     - target: {fileID: 1411717651300093142, guid: 53307db50e88183438e3a6d63f6d1982,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.1519394
+      value: -1.5400391
       objectReference: {fileID: 0}
     - target: {fileID: 1411717651300093142, guid: 53307db50e88183438e3a6d63f6d1982,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.7354202
+      value: -1.103569
       objectReference: {fileID: 0}
     - target: {fileID: 1411717651300093142, guid: 53307db50e88183438e3a6d63f6d1982,
         type: 3}
@@ -16395,20 +16395,20 @@ Transform:
   - {fileID: 1590005848}
   - {fileID: 829907892}
   - {fileID: 1814215572}
+  - {fileID: 87521636}
   - {fileID: 1412097431}
   - {fileID: 2126177221}
   - {fileID: 1004139887}
-  - {fileID: 87521636}
   - {fileID: 1502739005}
+  - {fileID: 2023970683}
   - {fileID: 33026351}
   - {fileID: 526626520}
   - {fileID: 1035506509}
-  - {fileID: 2023970683}
   - {fileID: 542474525}
   - {fileID: 2010191851}
   - {fileID: 529852986}
-  - {fileID: 1634226821}
   - {fileID: 630195577}
+  - {fileID: 1634226821}
   - {fileID: 106714106}
   - {fileID: 187254987}
   - {fileID: 525319732}

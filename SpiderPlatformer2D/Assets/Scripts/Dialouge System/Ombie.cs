@@ -9,6 +9,8 @@ public class Ombie : MonoBehaviour, INPC
     public static bool npcEnder;
     public static int childCount = 0;
     public int cameraIndex = 1;
+    [SerializeField] GameObject webObtainObject;
+    [SerializeField] Vector3 webObtainObjectForce;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(npcEnder == true) { return; }
@@ -33,7 +35,9 @@ public class Ombie : MonoBehaviour, INPC
     {
         playerCompleted = true;
         GetComponent<Animator>().SetTrigger("HappyIdle");
-        Web_Projectile.canWeb = true;
+        var webObtain = Instantiate(webObtainObject, transform.position, Quaternion.identity);
+        webObtain.GetComponent<Rigidbody2D>().AddForce(webObtainObjectForce);
+        //Web_Projectile.canWeb = true;
     }
     
    

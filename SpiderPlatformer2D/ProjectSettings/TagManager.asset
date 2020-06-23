@@ -32,6 +32,7 @@ TagManager:
   - TreeFall
   - Butterfly
   - Grass
+  - WebObtain
   layers:
   - Default
   - TransparentFX
@@ -55,8 +56,8 @@ TagManager:
   - PlatformEffector
   - Palamut
   - Diken
-  - 
-  - 
+  - WebObtain
+  - Ombie
   - 
   - 
   - 

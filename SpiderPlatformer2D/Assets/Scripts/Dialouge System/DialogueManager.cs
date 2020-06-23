@@ -29,6 +29,7 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
     public Animator animator;
+    public float delayBetweenChars = 0.1f;
     private void Start()
     {
         sentences = new Queue<string>();
@@ -67,7 +68,7 @@ public class DialogueManager : MonoBehaviour
         foreach(char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            yield return null;
+            yield return new WaitForSecondsRealtime(delayBetweenChars);
         }
     }
     private void EndDialogue()
