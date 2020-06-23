@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4717409308540564471}
   - component: {fileID: 1641252806146480263}
-  m_Layer: 8
+  m_Layer: 24
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 1591732595415690343}
   - component: {fileID: 4815014281144052611}
   - component: {fileID: 5249727283949083189}
-  m_Layer: 8
+  m_Layer: 24
   m_Name: CeilingDroppingThorn
   m_TagString: PlatformStone
   m_Icon: {fileID: 0}

@@ -36,7 +36,7 @@ public class SpiderBossIdle : StateMachineBehaviour
         if (playerController != null)
         {
             var randomNum = Random.Range(0, 10);
-            if (playerController.isTouchingPlatforms && randomNum <= 2)
+            if (playerController.isTouchingPlatforms && randomNum <= 1)
             {
                 //CreateAllStones();
                 animator.SetTrigger("HittingGround");

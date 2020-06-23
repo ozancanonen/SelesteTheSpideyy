@@ -58,7 +58,7 @@ public class BossGrapple : MonoBehaviour
         target = null;
         lineRenderer.enabled = false;
         BossGrappleBullet.bossHoldingPlayer = false;
-        //yield return new WaitForSeconds(1f);        //yield return new WaitForSeconds(1f);
+        //yield return new WaitForSeconds(1f);
         isGrappled = false;
     }
     public void PullableHit(GameObject hit) //when our hidden bullet hits the object with Grappable tag , we will call this method from GrappleBullet

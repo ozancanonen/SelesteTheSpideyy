@@ -5,6 +5,8 @@ using UnityEngine;
 public class Platform_Listener : MonoBehaviour
 {
     [SerializeField] GameObject stone;
+    [SerializeField] float stoneNumber;
+    [SerializeField] Transform[] spawnPosition;
 
     private void Awake()
     {
@@ -12,13 +14,19 @@ public class Platform_Listener : MonoBehaviour
     }
     public void DropStones()
     {
-        foreach(Transform child in transform)
-        {
-            Instantiate(stone, child.transform.position, Quaternion.identity);
-        }
+        StartCoroutine(SpawnWithDelay());
     }
     public void OnDisable()
     {
         Boss.CreateAllStones -= DropStones;
+    }
+    IEnumerator SpawnWithDelay()
+    {
+        for (int i=0;i< stoneNumber; i++)
+        {
+            Instantiate(stone, spawnPosition[Random.Range(0, spawnPosition.Length - 1)].position,
+                Quaternion.EulerAngles(0, 0,10));
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 }

@@ -212,6 +212,7 @@ public class Boss : MonoBehaviour
         StartCoroutine(CamShakeProcess());
         Play("SpiderBossSmash");
     }
+
     IEnumerator CamShakeProcess()
     {
         virtualCameraNoise.m_AmplitudeGain = shakePower;

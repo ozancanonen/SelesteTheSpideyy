@@ -88,12 +88,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9caa17cfa052f3d4cb76c76e3b051fa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChaseMax: 10
-  ChargeMax: 14
+  ChaseMax: 9
+  ChargeMax: 15
   PoisonMax: 16
-  BombMax: 20
-  Max: 22
-  yDif: 2
+  BombMax: 18
+  Max: 23
+  yDif: 3
 --- !u!1101 &-6347264950922281438
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef49b06ac18f4b4b8feea83e9cd9cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedValue: 10
+  speedValue: 14
 --- !u!1101 &-4287947298628908977
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -348,7 +348,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -8714032801391970489}
-    m_Position: {x: 40, y: 240, z: 0}
+    m_Position: {x: 360, y: 310, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -133633852027412854}
     m_Position: {x: 640, y: 360, z: 0}
@@ -357,16 +357,16 @@ AnimatorStateMachine:
     m_Position: {x: 320, y: 30, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2410226102298446117}
-    m_Position: {x: 700, y: 280, z: 0}
+    m_Position: {x: 730, y: 260, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1411045744308198339}
     m_Position: {x: 300, y: 140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6452639645701858732}
-    m_Position: {x: 280, y: 380, z: 0}
+    m_Position: {x: 80, y: 380, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2996619821366391755}
-    m_Position: {x: 20, y: 380, z: 0}
+    m_Position: {x: -130, y: 300, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1473501454456715096}
     m_Position: {x: 920, y: 230, z: 0}

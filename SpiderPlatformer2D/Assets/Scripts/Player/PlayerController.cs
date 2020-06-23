@@ -292,7 +292,7 @@ public class PlayerController : MonoBehaviour
         {
 
             poisonParticleHitCount++;
-            if (poisonParticleHitCount == 5)
+            if (poisonParticleHitCount == 2)
             {
                 UpdateHealth(0.25f);
                 poisonDamageParticleUI.GetComponent<ParticleSystem>().Play();
@@ -303,7 +303,7 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.tag=="AntParticle")
         {
             antParticleHitCount++;
-            if(antParticleHitCount==5)
+            if(antParticleHitCount==4)
             {
                 UpdateHealth(antParticleDamage);
                 poisonDamageParticleUI.GetComponent<ParticleSystem>().Play();
