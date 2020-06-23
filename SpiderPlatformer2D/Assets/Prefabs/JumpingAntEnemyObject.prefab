@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7171125158715671217}
   - component: {fileID: 5703655326918854090}
   - component: {fileID: 8394685427578017213}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: JumpingAnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5710104885012372152}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: JumpingAntEnemyObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 4864121681468535493}
   - component: {fileID: 3663568369605973137}
   - component: {fileID: 6150331178956680939}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PatrolAntDestroy
   m_TagString: Untagged
   m_Icon: {fileID: 0}

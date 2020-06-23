@@ -30,6 +30,7 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI dialogueText;
     public Animator animator;
     public float delayBetweenChars = 0.1f;
+    public AudioManager auidoManager;
     private void Start()
     {
         sentences = new Queue<string>();
@@ -64,12 +65,14 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator TypeSentence(string sentence)
     {
+        auidoManager.Play("TextSound");
         dialogueText.text = "";
         foreach(char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
             yield return new WaitForSecondsRealtime(delayBetweenChars);
         }
+        auidoManager.Pause("TextSound");
     }
     private void EndDialogue()
     {

@@ -5,6 +5,7 @@ using UnityEngine;
 public class FallPlatform : MonoBehaviour
 {
     // Start is called before the first frame update
+    public float fallPlatformNumber;
     public GameObject fallPlatformParticle;
     public GameObject tempColliderObject;
     public GameObject needToBeClosedParrallaxObject;
@@ -12,7 +13,11 @@ public class FallPlatform : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (fallPlatformNumber == 1&& !Ombie.ifThrowedWeb)
+        {
+            return;
+        }
+        else if (collision.tag == "Player")
         {
             playerObject = collision.gameObject;
             StartCoroutine(SetPlayerGrasvityLower());

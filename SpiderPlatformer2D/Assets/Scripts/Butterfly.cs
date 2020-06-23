@@ -9,6 +9,10 @@ public class Butterfly : MonoBehaviour, INPC
     public static bool npcEnder;
     public static int childCount = 0;
     public int cameraIndex = 1;
+    [SerializeField] GameObject glideObtainObject;
+    [SerializeField] Vector3 glideObtainObjectForce;
+    [SerializeField] Transform glideObtainObjectSpawnPos;
+    bool ifThrowedGlide;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (npcEnder == true) { return; }
@@ -18,8 +22,8 @@ public class Butterfly : MonoBehaviour, INPC
         {
             StartCoroutine(cameraChangeAfter());
             GetComponent<DialogueTrigger>().TriggerDialogue(playerCompleted, playersCame);
-            Grapple.canGrapple = true;
 
+            StartCoroutine(giveGlideSkill());
         }
     }
 
@@ -36,6 +40,12 @@ public class Butterfly : MonoBehaviour, INPC
         GetComponent<Animator>().SetTrigger("HappyIdle");
         Web_Projectile.canWeb = true;
     }
-
+    IEnumerator giveGlideSkill()
+    {
+        ifThrowedGlide = true;
+        yield return new WaitForSeconds(3f);
+        var webObtain = Instantiate(glideObtainObject, glideObtainObjectSpawnPos.position, Quaternion.identity);
+        webObtain.GetComponent<Rigidbody2D>().AddForce(glideObtainObjectForce);
+    }
 
 }

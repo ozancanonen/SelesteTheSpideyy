@@ -10,6 +10,7 @@ public class SceneLoader : MonoBehaviour
     public float menuSceneNumber;
     public Slider loadingSlider;
     [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject LoadingMenu;
     bool gameIsPaused;
 
     private void Start()
@@ -56,6 +57,7 @@ public class SceneLoader : MonoBehaviour
     }
     public void LoadLevel(string SceneName)
     {
+        PlayerPrefsController.bornInStartingPos = false;
         SceneManager.LoadScene(SceneName);
     }
 
@@ -66,7 +68,8 @@ public class SceneLoader : MonoBehaviour
 
     public IEnumerator LoadAsync(string SceneName)
     {
-        AsyncOperation operation =SceneManager.LoadSceneAsync(SceneName);
+        LoadingMenu.SetActive(true);
+              AsyncOperation operation =SceneManager.LoadSceneAsync(SceneName);
 
         while (!operation.isDone)
         {
