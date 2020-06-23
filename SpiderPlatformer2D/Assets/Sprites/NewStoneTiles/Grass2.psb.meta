@@ -136,8 +136,47 @@ ScriptedImporter:
     layerID: 116
     mosaicPosition: {x: 4, y: 4}
   characterData:
-    bones: []
-    parts: []
+    bones:
+    - name: bone_1
+      position: {x: 282.33853, y: 207.72469, z: 0}
+      rotation: {x: 0, y: 0, z: 0.729097, w: 0.68441045}
+      length: 80.46531
+      parentId: -1
+    - name: bone_2
+      position: {x: 80.46531, y: -0.000007957641, z: 0}
+      rotation: {x: 0, y: 0, z: -0.12123182, w: 0.9926243}
+      length: 79.55486
+      parentId: 0
+    - name: bone_3
+      position: {x: 17.734064, y: 54.897663, z: 0}
+      rotation: {x: 0, y: 0, z: -0.026748188, w: 0.99964225}
+      length: 104.70606
+      parentId: 0
+    - name: bone_4
+      position: {x: 18.60732, y: 116.973885, z: 0}
+      rotation: {x: 0, y: 0, z: 0.011295804, w: 0.9999362}
+      length: 94.88507
+      parentId: 0
+    - name: bone_5
+      position: {x: 17.387337, y: -63.231945, z: 0}
+      rotation: {x: 0, y: 0, z: -0.052277863, w: 0.9986326}
+      length: 171.93832
+      parentId: 0
+    - name: bone_6
+      position: {x: -0.65497375, y: -106.906166, z: 0}
+      rotation: {x: 0, y: 0, z: -0.13587475, w: 0.99072605}
+      length: 83.13699
+      parentId: 0
+    parts:
+    - spritePosition:
+        x: 86
+        y: 178
+        width: 351
+        height: 278
+      spriteId: bf44c3bf87795954e903ad2ab3300744
+      bones: 
+      parentGroup: 0
+      order: 0
     dimension: {x: 0, y: 0}
     characterGroups: []
   generateGOHierarchy: 0

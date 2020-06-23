@@ -9,7 +9,7 @@ public class GlideQuest : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Glide.canGlide = true;
-            GetComponent<DialogueTrigger>().TriggerDialogue(true, 1);
+            //GetComponent<DialogueTrigger>().TriggerDialogue(true, 1);
         }
     }
 }

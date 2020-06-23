@@ -221,7 +221,16 @@ public class PlayerController : MonoBehaviour
         }
         if (col.tag == "Grass")
         {
-            col.gameObject.GetComponent<Animator>().SetTrigger("Hit");
+            Debug.Log("grass hit");
+            if (rigidBody.velocity.x > 0.01f)
+            {
+                Debug.Log("sola");
+                col.gameObject.GetComponent<Animator>().SetTrigger("HitToRight");
+            }
+            else if  (rigidBody.velocity.x <-0.01f)
+            {
+                col.gameObject.GetComponent<Animator>().SetTrigger("HitToLeft");
+            }
 
 
         }
