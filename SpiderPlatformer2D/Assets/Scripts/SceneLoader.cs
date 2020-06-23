@@ -57,7 +57,10 @@ public class SceneLoader : MonoBehaviour
     }
     public void LoadLevel(string SceneName)
     {
-        PlayerPrefsController.bornInStartingPos = false;
+        if(SceneManager.GetActiveScene().name =="MainMenu")
+        {
+            PlayerPrefsController.bornInStartingPos = false;
+        }
         SceneManager.LoadScene(SceneName);
     }
 
