@@ -234,6 +234,18 @@ public class PlayerController : MonoBehaviour
 
 
         }
+        if (col.tag == "WebObtain")
+        {
+            Web_Projectile.canWeb = true;
+            Destroy(col.gameObject);
+            audioManager.Play("SkillObtain");
+        }
+        if (col.tag == "GrappleObtain")
+        {
+            Grapple.canGrapple = true;
+            Destroy(col.gameObject);
+            audioManager.Play("SkillObtain");
+        }
     }
 
     public void GetHealed()

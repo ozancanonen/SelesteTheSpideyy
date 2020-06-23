@@ -56,6 +56,7 @@ public class SceneLoader : MonoBehaviour
     }
     public void LoadLevel(string SceneName)
     {
+        PlayerPrefsController.bornInStartingPos = false;
         SceneManager.LoadScene(SceneName);
     }
 

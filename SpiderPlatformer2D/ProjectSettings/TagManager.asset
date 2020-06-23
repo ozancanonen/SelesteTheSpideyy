@@ -33,6 +33,7 @@ TagManager:
   - Butterfly
   - Grass
   - WebObtain
+  - GrappleObtain
   layers:
   - Default
   - TransparentFX

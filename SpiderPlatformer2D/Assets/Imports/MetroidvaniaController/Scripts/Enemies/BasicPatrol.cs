@@ -117,9 +117,10 @@ public class BasicPatrol : MonoBehaviour
             collision.gameObject.GetComponent<PlayerController>().UpdateHealth(10);
         }
 
-        if(collision.gameObject.CompareTag("WebBullet"))
+        if(collision.gameObject.CompareTag("WebBullet")|| collision.gameObject.GetComponent<Thorn>())
         {
             Die();
         }
+
     }
 }
