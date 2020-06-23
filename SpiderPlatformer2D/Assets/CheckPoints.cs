@@ -12,7 +12,6 @@ public class CheckPoints : MonoBehaviour
             PlayerPrefsController.cameraChanged = true;
             PlayerPrefsController.Instance.ChangeCameraIndex(currentCameraIndex);
             //PlayerPrefsController.Instance.ChangeCameraState();
-            Debug.Log("Player prefs");
             PlayerPrefsController.Instance.SavePosition(transform.position.x, transform.position.y);
             var wormlingHealth = FindObjectsOfType<WormlingHealth>();
             if(wormlingHealth!=null)

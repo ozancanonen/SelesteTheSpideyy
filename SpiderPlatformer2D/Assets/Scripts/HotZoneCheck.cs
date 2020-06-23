@@ -35,7 +35,6 @@ public class HotZoneCheck : MonoBehaviour
     {
         if(!enemyParent.isDead && collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("ant çıktı");
             inRange = false;
             gameObject.SetActive(false);
             enemyParent.triggerArea.SetActive(true);
