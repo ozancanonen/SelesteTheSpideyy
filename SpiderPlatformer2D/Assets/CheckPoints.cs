@@ -7,6 +7,11 @@ public class CheckPoints : MonoBehaviour
     [SerializeField] Animator plantAnimator;
     [SerializeField] GameObject foregroundParallaxObjects;
     private bool ifCame;
+
+    private void Awake()
+    {
+        ifCame = false;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player")&& !ifCame)

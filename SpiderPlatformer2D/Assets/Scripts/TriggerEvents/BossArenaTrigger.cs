@@ -23,4 +23,9 @@ public class BossArenaTrigger : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+    IEnumerator PlayBossBattleMusic()
+    {
+        yield return new WaitForSeconds(1);
+
+    }
 }

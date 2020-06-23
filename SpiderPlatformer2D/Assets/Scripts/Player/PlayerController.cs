@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -47,6 +49,7 @@ public class PlayerController : MonoBehaviour
     public GameObject damageParticleUI;
     public GameObject poisonDamageParticleUI;
     public Canvas canvas;
+    public TextMeshProUGUI achievementText;
 
 
     //State
@@ -238,14 +241,28 @@ public class PlayerController : MonoBehaviour
         {
             Web_Projectile.canWeb = true;
             Destroy(col.gameObject);
+            canvas.GetComponent<Animator>().SetTrigger("AchievementTextAnimation");
+            achievementText.text = "Web Shoot Skill Obtained";
             audioManager.Play("SkillObtain");
         }
         if (col.tag == "GrappleObtain")
         {
             Grapple.canGrapple = true;
             Destroy(col.gameObject);
+            canvas.GetComponent<Animator>().SetTrigger("AchievementTextAnimation");
+            achievementText.text = "Grapple Skill Obtained";
             audioManager.Play("SkillObtain");
         }
+        if (col.tag == "GlideObtain")
+        {
+            Glide.canGlide = true;
+            Destroy(col.gameObject);
+            canvas.GetComponent<Animator>().SetTrigger("AchievementTextAnimation");
+            achievementText.text = "Glide Skill Obtained";
+            audioManager.Play("SkillObtain");
+        }
+
+
     }
 
     public void GetHealed()
