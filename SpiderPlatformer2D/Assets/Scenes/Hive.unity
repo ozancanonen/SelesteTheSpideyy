@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -5425,7 +5425,7 @@ PrefabInstance:
     - target: {fileID: 1411717650314701894, guid: 53307db50e88183438e3a6d63f6d1982,
         type: 3}
       propertyPath: data.dataString
-      value: UEsDBBQAAAgIAAAYIezjXUUWaQIAABYFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1z2jAQ/SuMzoWxHSDQW+sQ0kM+prSTiy+KtcYahOTRR4Bk+O9dyTJ26Mnye7urt2/X/iRcmgZKq/Rac/aoGJDvI+LP5NuoJx/gSLdKbvgHdDGvnNnaB9EQ85tarhBPfZpRe7Calz/kVvjgBEEneaX0fsW2kCtjDcIVFQaQ0sr6bInQ54gc8TFe+pQTnrJbf/rA0zIZnfFYgrSg+9A0nWRpkqQxfpymySRZLtJZFvPaNCdLQfcNMN9Dn50t5pM0yW662+JrSJHYaYzOJot5DCuVENxEtcSemuBGThvjsFcMYJxi90GiF1UD39bW1xgmP1eVARut0fR0xzWa2FYlP1Xr7J6aXSv1nQoXdMzmQVpb9PE/fpwGutJq/9Ddi+YgZGte7n7TU0mNHVg/hO++CnfyQMWOvgl4rUE+qbVWTjIkrXY+1RnI7vrXS2t5DeWux1upV6Br+hF0k+7m7Hs4h+6PueD7N09Npi2wESr4HdYDNA7oFwoOy2NiCUS9ir8G/tDtcMsicc+1sUjFLqWX96ac9qFkFTzz3TibKy0hwFF0A5IKe3rBMvZ6hFfc4Nor5p767yleHrnuM7lKCXAfnyRX1Is6XIZlanV4BFM/Oyu4hF60J57Qp1xJ2W7Y0JMubeN0RctB2tZx9nW1SFaxjAGbT2cLxm6y6fh2Vi5ZRZcVnafTLJ2TsHtcYp9UvLRCoz04NdkXl7hn3W9mtNa0CdvOND2s+cdeDSznslKbUgPI57bCRThovAQ/TrZiHA3agLVchnmTz4IIVe6AFZdCReh0dbSaFn2VgjT8XVmPFCQP/5WCnMn5H1BLAwQUAAAICAAAGCHsqnaKjm0AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNVRUEovSizIKAaKGII4pZkpIHa0klFailFKaoqZialFSoqxkYmuuWmyZUpaomVaopmhiZGhmVIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAGCHs411FFmkCAAAWBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAGCHsqnaKjm0AAAB4AAAACQAkAAAAAAAAAAAAAAC2AgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAG4DAAAAAA==
+      value: UEsDBBQAAAgIAAAYIeyngaTRbQIAABoFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVMty4jAQ/BVK54WyHUJgb7sOIXvIo0K2cvFFscZYhZBcegRIin/fkSxjhz1Z7ukZ9fSM/UW4NA2UVumV5uxBMSA/R8SfyY9RH7yHA90oueaf0HHeOLO1J9HAeaGWK8RTn2bUDqzm5S+5EZ6cIOgkr5TeLdkGcmWsQbiiwgCGtLI+WyL0NSIHfIwXPuWIp+zGnz7xtEhGJzyWIC3onpqmkyxNkjTyx2maTJLFPL3OYl6b5mQp6K4B5nvos7P5bJIm2VV3W3wNKRI7jexsMp9FWqmE4CaqJfbYBDdy2hiHvSKBcYrdB4leVA18U1tfY5j8VFUGbLRG0+Mt12hiW5X8Vq2zO2q2rdQPKlzQkSxupsk8yGsLP/zHGachXGm1u+/uRoMQsjUvty/0WFJjB/YP4dvv4p3cU7Gl7wLeapCPaqWVkwyDVjuf6gxkt/3rub28hnLb463UC9A1/Ri6aXez9j2cggOHXPDduw9Npi2wFip4HlYENA7pDwoOC2RiCUS9ir8GXulmuGkxcMe1sRiKXUov71057alkGTzz3TibKy0hwFF0A5IKe3zGMvZyjBexwbUXkTvqv6l4eYx1n8pFSoB7fpJchJ7V/jwsU6v9A5j6yVnBJfSifeARfcqVlO2WDT3p0tZOV7QcpG0cZ99Xi2QVyxiw2fR6zthVNh3fXJcLVtFFRWfpNEtnJOwel9gnFc+t0GgPTk32xSXuWferGa00bcLGM033K/65UwPLuazUutQA8qmtcBYOGi/BD5QtGUeD1mAtl2He5KsgQpVbYMW5UBE6XR6spkVfpSAN/1DWIwXJw7+lICdy+gdQSwMEFAAACAgAABgh7Kp2io5tAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTVUVBKL0osyCgGihiCOKWZKSB2tJJRWopRSmqKmYmpRUqKsZGJrrlpsmVKWqJlWqKZoYmRoZlSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAABgh7KeBpNFtAgAAGgUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAABgh7Kp2io5tAAAAeAAAAAkAJAAAAAAAAAAAAAAAugIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAAByAwAAAAA=
       objectReference: {fileID: 0}
     - target: {fileID: 1411717650412164932, guid: 53307db50e88183438e3a6d63f6d1982,
         type: 3}
@@ -5529,9 +5529,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1411717651133477527, guid: 53307db50e88183438e3a6d63f6d1982,
         type: 3}
+      propertyPath: sounds.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1411717651133477527, guid: 53307db50e88183438e3a6d63f6d1982,
+        type: 3}
       propertyPath: sounds.Array.data[0].clip
       value: 
       objectReference: {fileID: 8300000, guid: 92173e71d67163142a9ae4ac06993748, type: 3}
+    - target: {fileID: 1411717651133477527, guid: 53307db50e88183438e3a6d63f6d1982,
+        type: 3}
+      propertyPath: sounds.Array.data[15].name
+      value: BossMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 1411717651133477527, guid: 53307db50e88183438e3a6d63f6d1982,
+        type: 3}
+      propertyPath: sounds.Array.data[15].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d88fd21bc0c602b4197af96974b31d08, type: 3}
+    - target: {fileID: 1411717651133477527, guid: 53307db50e88183438e3a6d63f6d1982,
+        type: 3}
+      propertyPath: sounds.Array.data[15].volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1411717651133477527, guid: 53307db50e88183438e3a6d63f6d1982,
+        type: 3}
+      propertyPath: sounds.Array.data[15].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1411717651133477527, guid: 53307db50e88183438e3a6d63f6d1982,
+        type: 3}
+      propertyPath: sounds.Array.data[15].maxDistance
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1411717651133477608, guid: 53307db50e88183438e3a6d63f6d1982,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5795,6 +5825,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &343619523 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1411717651133477527, guid: 53307db50e88183438e3a6d63f6d1982,
+    type: 3}
+  m_PrefabInstance: {fileID: 343619521}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4daf0d4f36aeef74aaa9f1a414ebdaf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &347626148
@@ -14358,7 +14400,6 @@ GameObject:
   - component: {fileID: 954598191}
   - component: {fileID: 954598193}
   - component: {fileID: 954598192}
-  - component: {fileID: 954598194}
   m_Layer: 0
   m_Name: SpiderBossArenaTrigger
   m_TagString: Untagged
@@ -14397,6 +14438,7 @@ MonoBehaviour:
   defaultCamera: {fileID: 623742236}
   bossCamera: {fileID: 245141505}
   bossHealthUI: {fileID: 245263194}
+  audioManager: {fileID: 343619523}
 --- !u!61 &954598193
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14423,102 +14465,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.8493195, y: 9.1718025}
   m_EdgeRadius: 0
---- !u!82 &954598194
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 954598190}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d88fd21bc0c602b4197af96974b31d08, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1001 &965628093
 PrefabInstance:
   m_ObjectHideFlags: 0

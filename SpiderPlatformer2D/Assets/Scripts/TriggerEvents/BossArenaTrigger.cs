@@ -9,7 +9,7 @@ public class BossArenaTrigger : MonoBehaviour
     [SerializeField] GameObject defaultCamera;
     [SerializeField] GameObject bossCamera;
     [SerializeField] GameObject bossHealthUI;
-
+    [SerializeField]AudioManager audioManager;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -21,6 +21,8 @@ public class BossArenaTrigger : MonoBehaviour
             defaultCamera.SetActive(false);
             bossCamera.SetActive(true);
             gameObject.SetActive(false);
+            audioManager.Play("BossMusic");
+            audioManager.Pause("guitar");
         }
     }
     IEnumerator PlayBossBattleMusic()

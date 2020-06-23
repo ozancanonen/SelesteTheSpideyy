@@ -35,6 +35,7 @@ public class Boss : MonoBehaviour
     [SerializeField] float bombThrowForce;
     [SerializeField] int bombCount = 3;
     [SerializeField] GameObject bomb;
+    [SerializeField] GameObject youWinTextObject;
     [SerializeField] SceneLoader sceneLoader;
 
 
@@ -71,7 +72,7 @@ public class Boss : MonoBehaviour
         maxBossHealth = bossHealth;
         bossHealthSlider.maxValue = bossHealth;
         animator = GetComponent<Animator>();
-        Play("SpiderBossScream");
+
 
         if (virtualCamera == null) { Debug.LogError("Virtial Camera has not been assigned"); return; }
         virtualCameraNoise = virtualCamera.GetCinemachineComponent<Cinemachine.CinemachineBasicMultiChannelPerlin>();
@@ -155,6 +156,8 @@ public class Boss : MonoBehaviour
             Play("SpiderBossDie");
             animator.SetTrigger("Die");
             wallAnim.SetBool("isClosed", false);
+            youWinTextObject.SetActive(true);
+
             defaultCamera.SetActive(true);
             bossCamera.SetActive(false);
             GetComponent<BoxCollider2D>().enabled = false;
@@ -162,12 +165,11 @@ public class Boss : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             GetComponent<Rigidbody2D>().isKinematic = true;
             bossHealthSlider.gameObject.SetActive(false);
-            sceneLoader.LoadMainMenu();
+
 
 
         }
     }
-
     private void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "WebBullet")
