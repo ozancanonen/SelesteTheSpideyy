@@ -12,6 +12,8 @@ public class Crawling : MonoBehaviour
     bool isDead = false;
     float distToPoint;          //This will store the remaining distance between player and NextWaypoint
     [SerializeField] Animator animator;
+    [SerializeField] GameObject hitParticle;
+    [SerializeField] Transform dieParticleSpawnPoint;
     // Update is called once per frame
     void Update()
     {
@@ -55,14 +57,20 @@ public class Crawling : MonoBehaviour
         if(isDead) { return; }
         if(collision.gameObject.CompareTag("WebBullet"))
         {
-            isDead = true;
-            animator.SetTrigger("getSquashed");
-            Destroy(gameObject, 0.28f);
-
+            Die();
         }
         if(collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<PlayerController>().UpdateHealth(crawlingEnemyDamage);
         }
+    }
+
+    public void Die()
+    {
+        isDead = true;
+        animator.SetTrigger("getSquashed");
+        var particle = Instantiate(hitParticle, dieParticleSpawnPoint.position, Quaternion.identity);
+        Destroy(particle, 1f);
+        Destroy(gameObject, 0.28f);
     }
 }
