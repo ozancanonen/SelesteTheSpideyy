@@ -7,6 +7,7 @@ public class FallPlatform : MonoBehaviour
     // Start is called before the first frame update
     public GameObject fallPlatformParticle;
     public GameObject tempColliderObject;
+    public GameObject needToBeClosedParrallaxObject;
     private GameObject playerObject;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -17,6 +18,10 @@ public class FallPlatform : MonoBehaviour
             StartCoroutine(SetPlayerGrasvityLower());
             tempColliderObject.SetActive(false);
             fallPlatformParticle.SetActive(true);
+            if (needToBeClosedParrallaxObject != null)
+            {
+                needToBeClosedParrallaxObject.SetActive(false);
+            }
         }
     }
     IEnumerator SetPlayerGrasvityLower()

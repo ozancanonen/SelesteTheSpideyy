@@ -12,6 +12,7 @@ public class Butterfly : MonoBehaviour, INPC
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (npcEnder == true) { return; }
+        Debug.Log("player came");
         playersCame++;
         if (collision.gameObject.tag == "Player")
         {

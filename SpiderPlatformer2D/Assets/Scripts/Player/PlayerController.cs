@@ -219,6 +219,12 @@ public class PlayerController : MonoBehaviour
             DeadMenu.SetActive(true);
             
         }
+        if (col.tag == "Grass")
+        {
+            col.gameObject.GetComponent<Animator>().SetTrigger("Hit");
+
+
+        }
     }
 
     public void GetHealed()
@@ -354,7 +360,6 @@ public class PlayerController : MonoBehaviour
             {
                 isJumping = true;
                 Vector2 jumpForce = new Vector2(0, jumpSpeed);
-                Debug.Log("jump");
                 audioManager.Play("PlayerJump");
                 GameObject jumpParticleObject = Instantiate(jumpParticle, groundCheck.position, Quaternion.identity);
                 jumpParticleObject.transform.parent = gameObject.transform;
@@ -378,7 +383,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(2)&& canCharge)
         {
-            Debug.Log("harge");
+  
             Vector2 direction = ((Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2)transform.position).normalized;
             //Vector3 dashPos;
             //dashPos = (Vector2)transform.position + direction * chargeSpeed;
@@ -403,7 +408,6 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundMask);//ağla ugur
         if (isJumping&& isGrounded)
         {
-            Debug.Log("grounded");
             audioManager.Play("PlayerLand");
         }
         animator.SetBool("isJumping", false);

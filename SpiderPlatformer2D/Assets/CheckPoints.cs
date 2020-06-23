@@ -4,6 +4,7 @@ using UnityEngine;
 public class CheckPoints : MonoBehaviour
 {
     [SerializeField] int currentCameraIndex;
+    [SerializeField] Animator plantAnimator;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
@@ -22,7 +23,9 @@ public class CheckPoints : MonoBehaviour
                 }
             }
             collision.gameObject.GetComponent<PlayerController>().GetHealed();
-            
+            plantAnimator.SetBool("Open", true);
+
+
         }
     }
 }
