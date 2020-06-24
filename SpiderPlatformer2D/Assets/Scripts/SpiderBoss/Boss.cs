@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour
 {
@@ -165,10 +166,17 @@ public class Boss : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             GetComponent<Rigidbody2D>().isKinematic = true;
             bossHealthSlider.gameObject.SetActive(false);
+            StartCoroutine(LoadCredits());
+
 
 
 
         }
+    }
+    IEnumerator LoadCredits()
+    {
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene("Credits");
     }
     private void OnCollisionEnter2D(Collision2D col)
     {
