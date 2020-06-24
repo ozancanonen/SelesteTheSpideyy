@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
     public GameObject poisonDamageParticleUI;
     public Canvas canvas;
     public TextMeshProUGUI achievementText;
+    public TextMeshProUGUI tutorialText;
 
 
     //State
@@ -253,6 +254,7 @@ public class PlayerController : MonoBehaviour
             Destroy(col.gameObject);
             canvas.GetComponent<Animator>().SetTrigger("AchievementTextAnimation");
             achievementText.text = "Web Shoot Skill Obtained";
+            tutorialText.text = "Press Mouse L to use";
             audioManager.Play("SkillObtain");
         }
         if (col.tag == "GrappleObtain")
@@ -261,6 +263,7 @@ public class PlayerController : MonoBehaviour
             Destroy(col.gameObject);
             canvas.GetComponent<Animator>().SetTrigger("AchievementTextAnimation");
             achievementText.text = "Grapple Skill Obtained";
+            tutorialText.text = "Press Mouse R to use";
             audioManager.Play("SkillObtain");
         }
         if (col.tag == "GlideObtain")
@@ -269,6 +272,7 @@ public class PlayerController : MonoBehaviour
             Destroy(col.gameObject);
             canvas.GetComponent<Animator>().SetTrigger("AchievementTextAnimation");
             achievementText.text = "Glide Skill Obtained";
+            tutorialText.text = "Hold Space to use";
             audioManager.Play("SkillObtain");
         }
 

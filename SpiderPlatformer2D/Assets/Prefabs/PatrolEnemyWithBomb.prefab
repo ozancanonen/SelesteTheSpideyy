@@ -225,6 +225,53 @@ PrefabInstance:
       propertyPath: enemy_Behaviour
       value: 
       objectReference: {fileID: 6610792152011992262}
+    - target: {fileID: 1775669899, guid: d5a6d1c58962a3b4a893d483007690f4, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7830189
+      objectReference: {fileID: 0}
+    - target: {fileID: 1775669899, guid: d5a6d1c58962a3b4a893d483007690f4, type: 3}
+      propertyPath: m_Color.g
+      value: 0.29178533
+      objectReference: {fileID: 0}
+    - target: {fileID: 1775669899, guid: d5a6d1c58962a3b4a893d483007690f4, type: 3}
+      propertyPath: m_Color.b
+      value: 0.29178533
+      objectReference: {fileID: 0}
+    - target: {fileID: 611983415365255958, guid: d5a6d1c58962a3b4a893d483007690f4,
+        type: 3}
+      propertyPath: m_PointLightInnerRadius
+      value: 0.08333202
+      objectReference: {fileID: 0}
+    - target: {fileID: 611983415365255958, guid: d5a6d1c58962a3b4a893d483007690f4,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.8396226
+      objectReference: {fileID: 0}
+    - target: {fileID: 611983415365255958, guid: d5a6d1c58962a3b4a893d483007690f4,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.17030083
+      objectReference: {fileID: 0}
+    - target: {fileID: 611983415365255958, guid: d5a6d1c58962a3b4a893d483007690f4,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.25860116
+      objectReference: {fileID: 0}
+    - target: {fileID: 611983415535819254, guid: d5a6d1c58962a3b4a893d483007690f4,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.8301887
+      objectReference: {fileID: 0}
+    - target: {fileID: 611983415535819254, guid: d5a6d1c58962a3b4a893d483007690f4,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.07440368
+      objectReference: {fileID: 0}
+    - target: {fileID: 611983415535819254, guid: d5a6d1c58962a3b4a893d483007690f4,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.18281439
+      objectReference: {fileID: 0}
     - target: {fileID: 3617797635097268459, guid: d5a6d1c58962a3b4a893d483007690f4,
         type: 3}
       propertyPath: leftLimit
@@ -374,7 +421,7 @@ PrefabInstance:
     - target: {fileID: 6138253625887882413, guid: d5a6d1c58962a3b4a893d483007690f4,
         type: 3}
       propertyPath: m_TagString
-      value: Pullable
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7541939348442297082, guid: d5a6d1c58962a3b4a893d483007690f4,
         type: 3}
