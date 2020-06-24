@@ -9,11 +9,15 @@ public class Gotomainmenu : MonoBehaviour
     private void Start()
     {
         Invoke("goToMainMenu", time);
+        Invoke("QuitTheGame", time+5);
     }
 
-private void goToMainMenu()
+    private void goToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
     }
-
+    private void QuitTheGame()
+    {
+        Application.Quit();
+    }
 }
