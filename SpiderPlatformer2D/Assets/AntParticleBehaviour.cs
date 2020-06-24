@@ -8,6 +8,8 @@ public class AntParticleBehaviour : MonoBehaviour
     private int currentIndex = 0;
     public float firstWayPointSpeed = 5;
     public float secondWayPointSpeed = 5;
+    [SerializeField] ParticleSystem ps1;
+    [SerializeField] ParticleSystem ps2;
     // Update is called once per frame
     void Update()
     {
@@ -23,7 +25,8 @@ public class AntParticleBehaviour : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            ps1.Pause();
+            ps2.Pause();
         }
     }
 }

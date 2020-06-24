@@ -83,6 +83,8 @@ public class PlayerController : MonoBehaviour
     [Header("AntParticle")]
     public float antParticleDamage = 3f;
     [SerializeField] GameObject antSwarmObject;
+    [SerializeField] GameObject wormling1;
+    [SerializeField] GameObject wormling2;
     void Start()
     {
         Time.timeScale = 1f;
@@ -95,6 +97,14 @@ public class PlayerController : MonoBehaviour
         timeBetweenStepValue = timeBetweenStep;
 
         PlayerPrefsProcess();
+        if (Web_Projectile.canWeb)
+        {
+            if (wormling1 != null)
+            {
+                Destroy(wormling1);
+                Destroy(wormling2);
+            }
+        }
     }
 
     void PlayerPrefsProcess()
