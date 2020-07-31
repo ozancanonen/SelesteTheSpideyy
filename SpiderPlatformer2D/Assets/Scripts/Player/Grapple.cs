@@ -6,6 +6,7 @@ using UnityEngine;
 public class Grapple : MonoBehaviour
 {
     [SerializeField] GameObject bullet;
+    [SerializeField] GameObject webEndPos;
     [SerializeField] float bulletSpeed = 2000f;
     public PlayerController playerController;
     public delegate void DestroySomeStuffInGrapple();
@@ -58,9 +59,12 @@ public class Grapple : MonoBehaviour
             {
                 lineRenderer.SetPosition(0, shootPoint.position);
                 lineRenderer.SetPosition(1, target.transform.position);
+                //webEndPos.transform.parent = target.transform;
             }
             else
             {
+                //webEndPos.SetActive(false);
+                //webEndPos.transform.parent = this.transform;
                 lineRenderer.enabled = false;
             }
         }
@@ -79,13 +83,22 @@ public class Grapple : MonoBehaviour
             RotateGrapple();
             timeToGrapple = 0;
             GameObject bulletInstance = Instantiate(bullet, shootPoint.position, Quaternion.identity);
+            webEndPos.transform.parent = bulletInstance.transform;
             bulletInstance.GetComponent<GrappleBullet>().SetGrapple(this); // this method will called immedialty when bullet instance is born.
             bulletInstance.GetComponent<Rigidbody2D>().AddForce(shootPoint.right * bulletSpeed);
             playerController.audioManager.Play("SpiderGrappleShoot");
             Destroy(bulletInstance, 0.6f);
+            //StartCoroutine(DestroyGrappleAfter(bulletInstance));
         }
     }
 
+    //IEnumerator DestroyGrappleAfter(GameObject bullet)
+    //{
+    //    yield return new WaitForSeconds(0.6f);
+    //    webEndPos.SetActive(false);
+    //    webEndPos.transform.parent = this.transform;
+    //    Destroy(bullet, 0.6f);
+    //}
     public void TargetHit(GameObject hit) //when our hidden bullet hits the object with Grappable tag , we will call this method from GrappleBullet
     {
         TargetSelection(hit);
@@ -101,6 +114,7 @@ public class Grapple : MonoBehaviour
         target = hit;
         springJoint.enabled = true;
         springJoint.connectedBody = target.GetComponent<Rigidbody2D>();
+        webEndPos.transform.parent = target.transform;
         lineRenderer.enabled = true;
     }
     private Vector2 GetMousePos()

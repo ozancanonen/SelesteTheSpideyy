@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyPatrolling : MonoBehaviour
 {
-    Rigidbody2D rigidbody;
+    private Rigidbody2D rb;
     public float speed = 10f;
     BoxCollider2D myFeet;
     [SerializeField] GameObject hitParticle;
@@ -15,8 +15,8 @@ public class EnemyPatrolling : MonoBehaviour
     void Start()
     {
         myFeet = GetComponent<BoxCollider2D>();
-        rigidbody = GetComponent<Rigidbody2D>();
-        rigidbody.velocity = new Vector3(speed, 0, 0);
+        rb = GetComponent<Rigidbody2D>();
+        rb.velocity = new Vector3(speed, 0, 0);
 
     }
 
@@ -44,7 +44,7 @@ public class EnemyPatrolling : MonoBehaviour
     private void SetSpeed()
     {
         speed = speed * -1;
-        rigidbody.velocity = new Vector3(speed, 0, 0);
+        rb.velocity = new Vector3(speed, 0, 0);
         FlipSprite();
     }
 
@@ -57,8 +57,8 @@ public class EnemyPatrolling : MonoBehaviour
         GetComponentInChildren<PatrolBombs>().InstantiateBombs();
         isDead = true;
         patrolAntAnim.SetTrigger("getSquashed");
-        rigidbody.velocity = Vector3.zero;
-        rigidbody.gravityScale = 0;
+        rb.velocity = Vector3.zero;
+        rb.gravityScale = 0;
         dieCollider.enabled = false;
         bodyCollider.enabled = false;
         Destroy(gameObject,2);

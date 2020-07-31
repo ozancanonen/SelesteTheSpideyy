@@ -5,7 +5,7 @@ using UnityEngine;
 public class OmbieChild : MonoBehaviour
 {
     [SerializeField] BoxCollider2D interactCol;
-    [SerializeField] Rigidbody2D rigidbody;
+     Rigidbody2D rb;
     [SerializeField] Animator wormlingAnim;
     bool isTouched = false;
     bool isHided;
@@ -13,6 +13,7 @@ public class OmbieChild : MonoBehaviour
     private void Start()
     {
         Ombie.childCount = 0;
+        rb = GetComponent<Rigidbody2D>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -27,7 +28,6 @@ public class OmbieChild : MonoBehaviour
             isTouched = true;
             Ombie.childCount++;
             wormlingAnim.SetTrigger("Idle");
-            Debug.Log("Working, number of child returned="+ Ombie.childCount);
 
             interactCol.enabled = false;
             StartCoroutine(StopRigidBodyAfter(3f));
@@ -40,11 +40,11 @@ public class OmbieChild : MonoBehaviour
     IEnumerator StopRigidBodyAfter(float time)
     {
         //rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX;
-        rigidbody.gravityScale = 5;
+        rb.gravityScale = 5;
         GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Grapple>().ReleaseGrapple();
         yield return new WaitForSeconds(time);
-        rigidbody.velocity = Vector3.zero;
-        rigidbody.bodyType = RigidbodyType2D.Static;
+        rb.velocity = Vector3.zero;
+        rb.bodyType = RigidbodyType2D.Static;
         //GetComponentInChildren<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
     }
 }

@@ -5,8 +5,8 @@ using UnityEngine;
 public class JumpingEnemy : MonoBehaviour
 {
     [SerializeField] float rightJumpForce;
-    Collider2D collider2D;
-    Rigidbody2D rigidbody;
+    Collider2D col;
+    Rigidbody2D rb;
     Animator animator;
     private int multiplier = 1;
     private float startingXScale;
@@ -14,8 +14,8 @@ public class JumpingEnemy : MonoBehaviour
     {
         startingXScale = transform.localScale.x;
         animator = GetComponent<Animator>();
-        rigidbody = GetComponent<Rigidbody2D>();
-        collider2D = GetComponent<Collider2D>();
+        rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
         animator.speed = Random.Range(0.8f, 1.2f);
     }
     public void Jump()
@@ -34,12 +34,12 @@ public class JumpingEnemy : MonoBehaviour
         }
 
         Vector3 forceDirection = transform.right * rightJumpForce * multiplier;
-        rigidbody.AddForce(forceDirection);
+        rb.AddForce(forceDirection);
     }
     public void SetSpeedToZeroEvent()
     {
-        rigidbody.velocity = Vector3.zero;
-        rigidbody.angularVelocity = 0;
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = 0;
     }
     
 }

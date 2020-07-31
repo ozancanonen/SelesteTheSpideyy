@@ -235,10 +235,8 @@ public class PlayerController : MonoBehaviour
         }
         if (col.tag == "Grass")
         {
-            Debug.Log("grass hit");
             if (rigidBody.velocity.x > 0.01f)
             {
-                Debug.Log("sola");
                 col.gameObject.GetComponent<Animator>().SetTrigger("HitToRight");
             }
             else if  (rigidBody.velocity.x <-0.01f)
