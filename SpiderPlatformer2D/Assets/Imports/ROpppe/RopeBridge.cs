@@ -13,7 +13,10 @@ public class RopeBridge : MonoBehaviour
     public int segmentLength = 35;
     public int constraintNumber = 50;
     private float lineWidth = 0.1f;
-
+    //Rope Process;
+    Transform target;
+    Transform lastPos;
+    public bool shouldFollow = false;
     // Use this for initialization
     void Start()
     {
@@ -31,6 +34,26 @@ public class RopeBridge : MonoBehaviour
     void Update()
     {
         this.DrawRope();
+        RopeFollowProcess();
+    }
+
+    private void RopeFollowProcess()
+    {
+        if (shouldFollow)
+        {
+            Debug.Log("Following");
+            if (target != null)
+            {
+                EndPoint.transform.position = target.position;
+            }
+            else
+            {
+                transform.position = lastPos.position;
+                Debug.Log("Still following");
+            }
+
+
+        }
     }
 
     private void FixedUpdate()
@@ -134,4 +157,19 @@ public class RopeBridge : MonoBehaviour
             this.posOld = pos;
         }
     }
+
+    public void SetTarget(Transform target)
+    {
+        this.target = target;
+    }
+
+    public void SetTargetToNull()
+    {
+        target = null;
+    }
+    public void SetLastPos(Transform lastPos)
+    {
+        this.lastPos = lastPos;
+    }
+
 }

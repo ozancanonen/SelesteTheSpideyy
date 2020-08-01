@@ -6,7 +6,6 @@ using UnityEngine;
 public class Grapple : MonoBehaviour
 {
     [SerializeField] GameObject bullet;
-    [SerializeField] GameObject webEndPos;
     [SerializeField] float bulletSpeed = 2000f;
     public PlayerController playerController;
     public delegate void DestroySomeStuffInGrapple();
@@ -19,6 +18,10 @@ public class Grapple : MonoBehaviour
     public static bool canGrapple = false;
     [HideInInspector] public bool isGrappled = false;
     [HideInInspector] public GameObject target;
+    //RopeProcess
+    [SerializeField] GameObject rope;
+    RopeBridge ropeBridge;
+    Transform lastPos;
 
     bool isPulling = false;
     float timeToGrapple = 0;
@@ -27,6 +30,8 @@ public class Grapple : MonoBehaviour
     {
         lineRenderer.enabled = false;
         springJoint.enabled = false;
+        ropeBridge = rope.GetComponent<RopeBridge>();
+        rope.SetActive(false);
     }
     private void Update()
     {
@@ -54,6 +59,11 @@ public class Grapple : MonoBehaviour
                 GetComponentInParent<Rigidbody2D>().gravityScale = playerController.gravityDefaultValue;
                 isGrappled = false;
                 isPulling = false;
+                //Rope process
+                ropeBridge.EndPoint.position = this.transform.position;
+                rope.SetActive(false);
+                ropeBridge.SetTargetToNull();
+                ropeBridge.shouldFollow = false;
             }
             if (target != null)
             {
@@ -67,6 +77,7 @@ public class Grapple : MonoBehaviour
                 //webEndPos.transform.parent = this.transform;
                 lineRenderer.enabled = false;
             }
+
         }
     }
     private void RotateGrapple()
@@ -83,21 +94,26 @@ public class Grapple : MonoBehaviour
             RotateGrapple();
             timeToGrapple = 0;
             GameObject bulletInstance = Instantiate(bullet, shootPoint.position, Quaternion.identity);
-            webEndPos.transform.parent = bulletInstance.transform;
             bulletInstance.GetComponent<GrappleBullet>().SetGrapple(this); // this method will called immedialty when bullet instance is born.
             bulletInstance.GetComponent<Rigidbody2D>().AddForce(shootPoint.right * bulletSpeed);
+            rope.SetActive(true);
+            ropeBridge.SetTarget(bulletInstance.transform);
+            ropeBridge.shouldFollow = true;
             playerController.audioManager.Play("SpiderGrappleShoot");
             Destroy(bulletInstance, 0.6f);
-            //StartCoroutine(DestroyGrappleAfter(bulletInstance));
         }
     }
 
     //IEnumerator DestroyGrappleAfter(GameObject bullet)
     //{
+    //    if(bullet!=null)
+    //    {
+    //        lastPos = bullet.transform;
+    //        ropeBridge.SetLastPos(lastPos);
+    //    }
     //    yield return new WaitForSeconds(0.6f);
-    //    webEndPos.SetActive(false);
-    //    webEndPos.transform.parent = this.transform;
-    //    Destroy(bullet, 0.6f);
+    //    Destroy(bullet);
+
     //}
     public void TargetHit(GameObject hit) //when our hidden bullet hits the object with Grappable tag , we will call this method from GrappleBullet
     {
@@ -114,7 +130,6 @@ public class Grapple : MonoBehaviour
         target = hit;
         springJoint.enabled = true;
         springJoint.connectedBody = target.GetComponent<Rigidbody2D>();
-        webEndPos.transform.parent = target.transform;
         lineRenderer.enabled = true;
     }
     private Vector2 GetMousePos()

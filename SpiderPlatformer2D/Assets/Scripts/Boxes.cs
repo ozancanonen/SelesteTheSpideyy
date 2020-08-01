@@ -13,9 +13,16 @@ public class Boxes : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
-
+    private void OnEnable()
+    {
+        RopeBridge ropeBridge = FindObjectOfType<RopeBridge>();
+        ropeBridge.SetLastPos(this.transform);
+    }
     private void OnDisable()
     {
+        RopeBridge ropeBridge = FindObjectOfType<RopeBridge>();
+        ropeBridge.shouldFollow = false;
+        ropeBridge.SetTargetToNull();
         PlayerController.DestroyBoxesInPlayerController -= DestroyMe;
         Grapple.DestroyBoxes -= DestroyMe;
     }

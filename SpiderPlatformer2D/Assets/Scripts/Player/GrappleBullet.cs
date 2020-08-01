@@ -26,7 +26,8 @@ public class GrappleBullet : MonoBehaviour
             {
                 grapple.PullableHit(collision.gameObject);
             }
-
+            RopeBridge ropeBridge = FindObjectOfType<RopeBridge>();
+            ropeBridge.SetLastPos(this.transform);
             Destroy(gameObject);
 
         }
