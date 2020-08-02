@@ -89,6 +89,20 @@ public class PlayerController : MonoBehaviour
     //RopeBridgeProcess
     [Header("RopeBridge")]
     [SerializeField] RopeBridge ropeBridge;
+
+    //Melee Process
+    [Header("Melee")]
+    [SerializeField] float attackDamage = 10f;
+    public Vector2 attackOffset;
+    public float attackRange = 1f;
+    public LayerMask attackMask;
+    public Transform attackPos;
+
+    [Header("Dash Process")]
+    public float dashSpeed;
+    private float dashTime;
+    public float startDashTime;
+    private int direction;
     void Start()
     {
         Time.timeScale = 1f;
@@ -99,7 +113,8 @@ public class PlayerController : MonoBehaviour
         jumpSpeedValue = jumpSpeed;
         runSpeedValue = runSpeed;
         timeBetweenStepValue = timeBetweenStep;
-
+        //Dash Process
+        dashTime = startDashTime;
         PlayerPrefsProcess();
         if (Web_Projectile.canWeb)
         {
@@ -123,7 +138,9 @@ public class PlayerController : MonoBehaviour
             getIfGrounded();
             InteractionWithBoss();
             Run();
+            Dash();
             Jump();
+            Attack();
             FlipSprite();
             WallJump();
             ManageJumpingAndFallingAnim();
@@ -225,6 +242,83 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    private void Dash()
+    {
+        if (direction == 0)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                direction = 1;
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                direction = 2;
+            }
+            else if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                direction = 3;
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                direction = 4;
+            }
+        }
+        else
+        {
+            if (dashTime <= 0)
+            {
+                direction = 0;
+                dashTime = startDashTime;
+                rigidBody.velocity = Vector2.zero; 
+            }
+            else
+            {
+                dashTime -= Time.deltaTime;
+                if (direction == 1)
+                {
+                    rigidBody.velocity = Vector2.left * dashSpeed;
+                }
+                else if (direction == 2)
+                {
+                    rigidBody.velocity = Vector2.right * dashSpeed;
+                }
+                else if (direction == 2)
+                {
+                    rigidBody.AddForce(Vector2.up * dashSpeed * Physics2D.gravity * 100);
+                }
+                else if (direction == 2)
+                {
+                    rigidBody.AddForce(Vector2.down * dashSpeed * Physics2D.gravity * 100);
+                }
+            }
+        }
+    }
+
+    private void Attack()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 pos = attackPos.position;
+            pos += transform.right * attackOffset.x;
+            pos += transform.up * attackOffset.y;
+
+            Collider2D colInfo = Physics2D.OverlapCircle(pos, attackRange, attackMask);
+            if (colInfo!= null && colInfo.transform.GetComponent<IDamagable>() != null)
+            {
+                colInfo.GetComponent<IDamagable>().GetDamage(attackDamage, transform);
+            }
+        }
+    }
+    void OnDrawGizmosSelected()
+    {
+        Vector3 pos = attackPos.position;
+        pos += transform.right * attackOffset.x;
+        pos += transform.up * attackOffset.y;
+
+        Gizmos.DrawWireSphere(pos, attackRange);
+    }
+
     //private void FixedUpdate()
     //{
 
