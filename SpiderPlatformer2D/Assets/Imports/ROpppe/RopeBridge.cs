@@ -6,7 +6,7 @@ public class RopeBridge : MonoBehaviour
 {
     public Transform StartPoint;
     public Transform EndPoint;
-
+    PlayerController playerController;
     private LineRenderer lineRenderer;
     private List<RopeSegment> ropeSegments = new List<RopeSegment>();
     public float ropeSegLen = 0.25f;
@@ -20,6 +20,7 @@ public class RopeBridge : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         this.lineRenderer = this.GetComponent<LineRenderer>();
         Vector3 ropeStartPoint = StartPoint.position;
 
@@ -39,6 +40,7 @@ public class RopeBridge : MonoBehaviour
 
     private void RopeFollowProcess()
     {
+        if (!playerController.isAlive) return;
         if (shouldFollow)
         {
             Debug.Log("Following");
@@ -48,11 +50,9 @@ public class RopeBridge : MonoBehaviour
             }
             else
             {
-                transform.position = lastPos.position;
+                EndPoint.position = lastPos.position;
                 Debug.Log("Still following");
             }
-
-
         }
     }
 
@@ -170,6 +170,7 @@ public class RopeBridge : MonoBehaviour
     public void SetLastPos(Transform lastPos)
     {
         this.lastPos = lastPos;
+        EndPoint.transform.position = lastPos.position;
     }
 
 }

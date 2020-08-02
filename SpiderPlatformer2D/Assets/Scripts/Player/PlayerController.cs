@@ -86,6 +86,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject antSwarmObject;
     [SerializeField] GameObject wormling1;
     [SerializeField] GameObject wormling2;
+    //RopeBridgeProcess
+    [Header("RopeBridge")]
+    [SerializeField] RopeBridge ropeBridge;
     void Start()
     {
         Time.timeScale = 1f;
@@ -130,6 +133,24 @@ public class PlayerController : MonoBehaviour
                 if (grapple.GetTarget() != null)
                 {
                     float distanceBetweenObjectAndPlayer = Vector3.Distance(grapple.GetTargetPos(), transform.position);
+                    //Debug.Log(distanceBetweenObjectAndPlayer); //Gives a float value between 3 and 12
+                    if (distanceBetweenObjectAndPlayer > 0 && distanceBetweenObjectAndPlayer < 3)
+                    {
+                        ropeBridge.ropeSegLen = 0.02f;
+                    }
+                    else if (distanceBetweenObjectAndPlayer > 3 && distanceBetweenObjectAndPlayer < 6)
+                    {
+                        ropeBridge.ropeSegLen = 0.1f;
+                    }
+                    else if (distanceBetweenObjectAndPlayer > 6 && distanceBetweenObjectAndPlayer < 10)
+                    {
+                        ropeBridge.ropeSegLen = 0.2f;
+                    }
+                    else
+                    {
+                        ropeBridge.ropeSegLen = 0.25f;
+                    }
+
                     GameObject targetInstance = grapple.GetTarget();
                     if (distanceBetweenObjectAndPlayer >= 2f)
                     {
@@ -141,10 +162,12 @@ public class PlayerController : MonoBehaviour
                         rigidBody.gravityScale = 0;
                         if (distanceBetweenObjectAndPlayer > grappleRadious)
                         {
-                            GameObject particle = Instantiate(webSnapParticle, (transform.position + 
-                                grapple.target.transform.position) / 2,Quaternion.identity);
+                            GameObject particle = Instantiate(webSnapParticle, (transform.position +
+                            grapple.target.transform.position) / 2, Quaternion.identity);
+                            grapple.DeActiveRope();
+                            grapple.target = null;
 
-                            if(DestroyWebs!=null)
+                            if (DestroyWebs!=null)
                             {
                                 DestroyWebs();
                             }
@@ -170,6 +193,8 @@ public class PlayerController : MonoBehaviour
             {
                 if (grapple.GetTarget() != null)
                 {
+                    //RopeBridge Segment Process 
+                    
                     float distanceBetweenObjectAndPlayer = Vector3.Distance(grapple.GetTargetPos(), transform.position);
                     GameObject targetInstance = grapple.GetTarget();
                     if (distanceBetweenObjectAndPlayer >= 2f)
@@ -180,9 +205,10 @@ public class PlayerController : MonoBehaviour
                         {
                             GameObject particle = Instantiate(webSnapParticle, (transform.position + grapple.target.transform.position) / 2,
                             Quaternion.identity);
+                            grapple.DeActiveRope();
                             grapple.target = null;
                             //DestroyBoxes(); // change this with event
-                            if(DestroyBoxesInPlayerController!=null)
+                            if (DestroyBoxesInPlayerController!=null)
                             {
                                 DestroyBoxesInPlayerController();
                             }

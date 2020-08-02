@@ -28,7 +28,7 @@ public class Grapple : MonoBehaviour
 
     private void Start()
     {
-        lineRenderer.enabled = false;
+        //lineRenderer.enabled = false;
         springJoint.enabled = false;
         ropeBridge = rope.GetComponent<RopeBridge>();
         rope.SetActive(false);
@@ -67,15 +67,15 @@ public class Grapple : MonoBehaviour
             }
             if (target != null)
             {
-                lineRenderer.SetPosition(0, shootPoint.position);
-                lineRenderer.SetPosition(1, target.transform.position);
+                //lineRenderer.SetPosition(0, shootPoint.position);
+                //lineRenderer.SetPosition(1, target.transform.position);
                 //webEndPos.transform.parent = target.transform;
             }
             else
             {
                 //webEndPos.SetActive(false);
                 //webEndPos.transform.parent = this.transform;
-                lineRenderer.enabled = false;
+                //lineRenderer.enabled = false;
             }
 
         }
@@ -130,7 +130,7 @@ public class Grapple : MonoBehaviour
         target = hit;
         springJoint.enabled = true;
         springJoint.connectedBody = target.GetComponent<Rigidbody2D>();
-        lineRenderer.enabled = true;
+        //lineRenderer.enabled = true;
     }
     private Vector2 GetMousePos()
     {
@@ -161,5 +161,9 @@ public class Grapple : MonoBehaviour
         DisableSprintJoint();
         target = null;
         isGrappled = false;
+    }
+    public void DeActiveRope()
+    {
+        rope.SetActive(false);
     }
 }
