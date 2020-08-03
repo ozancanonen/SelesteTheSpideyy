@@ -103,8 +103,14 @@ public class PlayerController : MonoBehaviour
     private float dashTime;
     public float startDashTime;
     private int direction;
+    
+    
     void Start()
     {
+        if(Debug.isDebugBuild)
+        {
+            Grapple.canGrapple = true;
+        }
         Time.timeScale = 1f;
         Cursor.visible = true;
         grapple = GetComponentInChildren<Grapple>();
@@ -139,8 +145,8 @@ public class PlayerController : MonoBehaviour
             InteractionWithBoss();
             Run();
             Dash();
-            Jump();
             Attack();
+            Jump();
             FlipSprite();
             WallJump();
             ManageJumpingAndFallingAnim();
@@ -245,69 +251,76 @@ public class PlayerController : MonoBehaviour
 
     private void Dash()
     {
-        if (direction == 0)
-        {
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            if (direction == 0)
             {
-                direction = 1;
-            }
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                direction = 2;
-            }
-            else if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                direction = 3;
-            }
-            else if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                direction = 4;
-            }
-        }
-        else
-        {
-            if (dashTime <= 0)
-            {
-                direction = 0;
-                dashTime = startDashTime;
-                rigidBody.velocity = Vector2.zero; 
+                if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    direction = 1;
+                }
+                else if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    direction = 2;
+                }
+                else if (Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    direction = 3;
+                }
+                else if (Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    direction = 4;
+                }
             }
             else
             {
-                dashTime -= Time.deltaTime;
-                if (direction == 1)
+                if (dashTime <= 0)
                 {
-                    rigidBody.velocity = Vector2.left * dashSpeed;
+                    direction = 0;
+                    dashTime = startDashTime;
+                    rigidBody.velocity = Vector2.zero;
                 }
-                else if (direction == 2)
+                else
                 {
-                    rigidBody.velocity = Vector2.right * dashSpeed;
-                }
-                else if (direction == 2)
-                {
-                    rigidBody.AddForce(Vector2.up * dashSpeed * Physics2D.gravity * 100);
-                }
-                else if (direction == 2)
-                {
-                    rigidBody.AddForce(Vector2.down * dashSpeed * Physics2D.gravity * 100);
+                    dashTime -= Time.deltaTime;
+                    if (direction == 1)
+                    {
+                        rigidBody.velocity = Vector2.left * dashSpeed;
+                    }
+                    else if (direction == 2)
+                    {
+                        rigidBody.velocity = Vector2.right * dashSpeed;
+                    }
+                    else if (direction == 2)
+                    {
+                        rigidBody.AddForce(Vector2.up * dashSpeed * Physics2D.gravity * 100);
+                    }
+                    else if (direction == 2)
+                    {
+                        rigidBody.AddForce(Vector2.down * dashSpeed * Physics2D.gravity * 100);
+                    }
                 }
             }
-        }
+       
     }
 
     private void Attack()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Vector3 pos = attackPos.position;
-            pos += transform.right * attackOffset.x;
-            pos += transform.up * attackOffset.y;
+            animator.SetTrigger("Attack");
+        }
+    }
 
-            Collider2D colInfo = Physics2D.OverlapCircle(pos, attackRange, attackMask);
-            if (colInfo!= null && colInfo.transform.GetComponent<IDamagable>() != null)
-            {
-                colInfo.GetComponent<IDamagable>().GetDamage(attackDamage, transform);
-            }
+    public void AttackEvent()
+    {
+        Vector3 pos = attackPos.position;
+        pos += transform.right * attackOffset.x;
+        pos += transform.up * attackOffset.y;
+
+        Collider2D colInfo = Physics2D.OverlapCircle(pos, attackRange, attackMask);
+        if (colInfo != null && colInfo.transform.GetComponent<IDamagable>() != null)
+        {
+            GameManager.Instance.ShakeEvent();
+            colInfo.GetComponent<IDamagable>().GetDamage(attackDamage, transform);
         }
     }
     void OnDrawGizmosSelected()
