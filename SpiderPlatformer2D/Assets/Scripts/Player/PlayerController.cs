@@ -97,6 +97,7 @@ public class PlayerController : MonoBehaviour
     public float attackRange = 1f;
     public LayerMask attackMask;
     public Transform attackPos;
+    [SerializeField] Vector2[] attackPositions;
 
     [Header("Dash Process")]
     public float dashSpeed;
@@ -312,6 +313,9 @@ public class PlayerController : MonoBehaviour
 
     public void AttackEvent()
     {
+        Vector3 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
+        attackPos.localPosition = GetAttackPos(direction.x, direction.y);
+
         Vector3 pos = attackPos.position;
         pos += transform.right * attackOffset.x;
         pos += transform.up * attackOffset.y;
@@ -321,6 +325,32 @@ public class PlayerController : MonoBehaviour
         {
             GameManager.Instance.ShakeEvent();
             colInfo.GetComponent<IDamagable>().GetDamage(attackDamage, transform);
+        }
+    }
+    private Vector2 GetAttackPos(float xAxis,float yAxis)
+    {
+        bool isXaxis = Mathf.Abs(xAxis) > Mathf.Abs(yAxis);
+        if (isXaxis)
+        {
+            if (xAxis > 0)
+            {
+                return attackPositions[0];
+            }
+            else
+            {
+                return attackPositions[1];
+            }
+        }
+        else
+        {
+            if (yAxis > 0)
+            {
+                return attackPositions[2];
+            }
+            else
+            {
+                return attackPositions[3];
+            }
         }
     }
     void OnDrawGizmosSelected()
