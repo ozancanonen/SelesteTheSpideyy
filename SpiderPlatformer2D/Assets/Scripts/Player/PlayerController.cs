@@ -307,15 +307,14 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            Vector3 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
+            attackPos.localPosition = GetAttackPos(direction.x, direction.y);
             animator.SetTrigger("Attack");
         }
     }
 
     public void AttackEvent()
     {
-        Vector3 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
-        attackPos.localPosition = GetAttackPos(direction.x, direction.y);
-
         Vector3 pos = attackPos.position;
         pos += transform.right * attackOffset.x;
         pos += transform.up * attackOffset.y;
@@ -330,16 +329,34 @@ public class PlayerController : MonoBehaviour
     private Vector2 GetAttackPos(float xAxis,float yAxis)
     {
         bool isXaxis = Mathf.Abs(xAxis) > Mathf.Abs(yAxis);
+       
         if (isXaxis)
         {
-            if (xAxis > 0)
+            if(GameObject.FindGameObjectWithTag("Player").transform.localScale.x!=-1)
             {
-                return attackPositions[0];
+                if (xAxis > 0)
+                {
+                    return attackPositions[0];
+                }
+                else
+                {
+                    return attackPositions[1];
+                }
             }
             else
             {
-                return attackPositions[1];
+                if (xAxis > 0)
+                {
+                    return new Vector2(attackPositions[0].x*-1,attackPositions[0].y);
+                }
+                else
+                {
+
+                    return new Vector2(attackPositions[1].x * -1, attackPositions[0].y); 
+                }
+               
             }
+           
         }
         else
         {
