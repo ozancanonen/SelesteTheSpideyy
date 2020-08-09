@@ -44,6 +44,8 @@ public class Grapple : MonoBehaviour
             }
             else if (Input.GetMouseButtonUp(1))
             {
+                ropeBridge.StartPoint.position = transform.position;
+                ropeBridge.EndPoint.position = transform.position;
                 if (DestroyWebsInGrapple != null)
                 {
                     DestroyWebsInGrapple();

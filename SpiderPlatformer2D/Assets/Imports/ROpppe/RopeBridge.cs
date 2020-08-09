@@ -17,6 +17,7 @@ public class RopeBridge : MonoBehaviour
     Transform target;
     Transform lastPos;
     public bool shouldFollow = false;
+    [SerializeField] Grapple grapple;
     // Use this for initialization
     void Start()
     {
@@ -170,5 +171,7 @@ public class RopeBridge : MonoBehaviour
         this.lastPos = lastPos;
         EndPoint.transform.position = lastPos.position;
     }
+
+   
 
 }
