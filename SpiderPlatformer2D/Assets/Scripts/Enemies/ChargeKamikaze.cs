@@ -25,7 +25,6 @@ public class ChargeKamikaze : MonoBehaviour
     bool isChasing = false;
     bool isCharging = false;
     bool isDead = false;
-    bool canAttackDirectly = true;
     bool isAttackReady;
     float attackRateValue;
     float xScaleValue;

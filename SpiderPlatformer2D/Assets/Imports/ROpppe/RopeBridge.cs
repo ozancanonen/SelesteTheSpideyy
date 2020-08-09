@@ -43,7 +43,6 @@ public class RopeBridge : MonoBehaviour
         if (!playerController.isAlive) return;
         if (shouldFollow)
         {
-            Debug.Log("Following");
             if (target != null)
             {
                 EndPoint.transform.position = target.position;
@@ -51,7 +50,6 @@ public class RopeBridge : MonoBehaviour
             else
             {
                 EndPoint.position = lastPos.position;
-                Debug.Log("Still following");
             }
         }
     }
