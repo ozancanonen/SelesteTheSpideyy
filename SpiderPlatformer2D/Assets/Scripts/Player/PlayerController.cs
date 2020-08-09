@@ -103,6 +103,11 @@ public class PlayerController : MonoBehaviour
     private float dashTime;
     public float startDashTime;
     private int direction;
+    public bool hasTouchedArrow = false;
+    public bool canDash = true;
+    private float dashTimer = 0;
+    public float dashLimit = 1f;
+
     
     
     void Start()
@@ -144,7 +149,7 @@ public class PlayerController : MonoBehaviour
             getIfGrounded();
             InteractionWithBoss();
             Run();
-            Dash();
+            DashProcess();
             Attack();
             Jump();
             FlipSprite();
@@ -249,59 +254,81 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void Dash()
+
+    private void DashProcess()
     {
-            if (direction == 0)
+        if (hasTouchedArrow && dashTimer < dashLimit)
+        {
+            canDash = false;
+            dashTimer += Time.deltaTime;
+        }
+        else
+        {
+            canDash = true;
+        }
+        if (direction == 0)
+        {
+
+            if (Input.GetKeyDown(KeyCode.LeftArrow) &&canDash)
             {
-                if (Input.GetKeyDown(KeyCode.LeftArrow))
-                {
-                    direction = 1;
-                }
-                else if (Input.GetKeyDown(KeyCode.RightArrow))
-                {
-                    direction = 2;
-                }
-                else if (Input.GetKeyDown(KeyCode.UpArrow))
-                {
-                    direction = 3;
-                }
-                else if (Input.GetKeyDown(KeyCode.DownArrow))
-                {
-                    direction = 4;
-                }
+                hasTouchedArrow = true;
+                dashTimer = 0;
+                direction = 1;
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow)&&canDash)
+            {
+                hasTouchedArrow = true;
+                dashTimer = 0;
+                direction = 2;
+            }
+            else if (Input.GetKeyDown(KeyCode.UpArrow)&&canDash)
+            {
+                hasTouchedArrow = true;
+                dashTimer = 0;
+                direction = 3;
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow)&&canDash)
+            {
+                hasTouchedArrow = true;
+                dashTimer = 0;
+                direction = 4;
+            }
+            
+           
+            
+        }
+        else
+        {
+
+            if (dashTime < 0)
+            {
+                direction = 0;
+                rigidBody.velocity = Vector3.zero;
+                dashTime = startDashTime;
             }
             else
             {
-                if (dashTime <= 0)
+                dashTime -= Time.deltaTime;
+                if (direction == 1)
                 {
-                    direction = 0;
-                    dashTime = startDashTime;
-                    rigidBody.velocity = Vector2.zero;
+                    rigidBody.velocity = Vector2.left * Time.deltaTime * dashSpeed * 100f;
                 }
-                else
+                else if (direction == 2)
                 {
-                    dashTime -= Time.deltaTime;
-                    if (direction == 1)
-                    {
-                        rigidBody.velocity = Vector2.left * dashSpeed;
-                    }
-                    else if (direction == 2)
-                    {
-                        rigidBody.velocity = Vector2.right * dashSpeed;
-                    }
-                    else if (direction == 2)
-                    {
-                        rigidBody.AddForce(Vector2.up * dashSpeed * Physics2D.gravity * 100);
-                    }
-                    else if (direction == 2)
-                    {
-                        rigidBody.AddForce(Vector2.down * dashSpeed * Physics2D.gravity * 100);
-                    }
+                    rigidBody.velocity = Vector2.right * Time.deltaTime * dashSpeed * 100f;
+                }
+                else if (direction == 3)
+                {
+                    rigidBody.velocity = Vector2.up * Time.deltaTime * dashSpeed * 100f;
+                }
+                else if (direction == 4)
+                {
+                    rigidBody.velocity = Vector2.down * Time.deltaTime * dashSpeed * 100f;
                 }
             }
-       
-    }
+        }
 
+    }
     private void Attack()
     {
         if (Input.GetMouseButtonDown(0))
