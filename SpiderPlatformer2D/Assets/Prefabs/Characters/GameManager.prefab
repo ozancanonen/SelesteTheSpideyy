@@ -890,7 +890,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1411717651133477609}
+      - m_Target: {fileID: 0}
         m_MethodName: LoadLevel
         m_Mode: 5
         m_Arguments:
@@ -2609,7 +2609,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1411717651133477609}
+      - m_Target: {fileID: 0}
         m_MethodName: LoadLevel
         m_Mode: 5
         m_Arguments:
@@ -2825,6 +2825,7 @@ MonoBehaviour:
   dialogueText: {fileID: 1411717651050872601}
   animator: {fileID: 1411717649866360541}
   delayBetweenChars: 0.01
+  auidoManager: {fileID: 0}
 --- !u!1 &1411717650695190649
 GameObject:
   m_ObjectHideFlags: 0
@@ -3382,10 +3383,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1411717651133477608}
-  - component: {fileID: 1411717651133477609}
   - component: {fileID: 1411717651133477526}
-  - component: {fileID: 1411717651133477527}
   - component: {fileID: 1756553166583678315}
+  - component: {fileID: 7795726871846043201}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3413,22 +3413,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1411717651133477609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1411717651133477611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e43d8a82323225541857d00b2675a376, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menuSceneNumber: 0
-  loadingSlider: {fileID: 0}
-  pauseMenu: {fileID: 1411717650796706890}
-  LoadingMenu: {fileID: 0}
 --- !u!114 &1411717651133477526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3441,155 +3425,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f374d6f0cd53bc498db57e65e8f6c05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1411717651133477527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1411717651133477611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4daf0d4f36aeef74aaa9f1a414ebdaf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: guitar
-    clip: {fileID: 8300000, guid: 3ab136113af80e943b857beff946c525, type: 3}
-    volume: 0.1
-    pitch: 1
-    spatialBlend: 0
-    maxDistance: 0
-    priority: 0
-    loop: 1
-    source: {fileID: 0}
-  - name: SpiderWalk1
-    clip: {fileID: 8300000, guid: a9d7643d026718a4e8498b72977d084d, type: 3}
-    volume: 0.3
-    pitch: 1
-    spatialBlend: 0
-    maxDistance: 0
-    priority: 0
-    loop: 0
-    source: {fileID: 0}
-  - name: SpiderWalk2
-    clip: {fileID: 8300000, guid: bb9acab8f4857024aae2e91d1f6fa8b1, type: 3}
-    volume: 0.3
-    pitch: 1
-    spatialBlend: 0
-    maxDistance: 0
-    priority: 0
-    loop: 0
-    source: {fileID: 0}
-  - name: SpiderWalk3
-    clip: {fileID: 8300000, guid: 0ab9c81ab03b8334b90ab05d18c39e00, type: 3}
-    volume: 0.3
-    pitch: 1
-    spatialBlend: 0
-    maxDistance: 0
-    priority: 0
-    loop: 0
-    source: {fileID: 0}
-  - name: SpiderWalk4
-    clip: {fileID: 8300000, guid: ccb4bc2d65eae2d47a0f426b4e854497, type: 3}
-    volume: 0.3
-    pitch: 1
-    spatialBlend: 0
-    maxDistance: 0
-    priority: 0
-    loop: 0
-    source: {fileID: 0}
-  - name: SpiderWalk5
-    clip: {fileID: 8300000, guid: d809d2149337a4f4f9628ee0949e74e2, type: 3}
-    volume: 0.3
-    pitch: 1
-    spatialBlend: 0
-    maxDistance: 0
-    priority: 0
-    loop: 0
-    source: {fileID: 0}
-  - name: WaterPop
-    clip: {fileID: 8300000, guid: 400783089fb0db248802f0c1080076d3, type: 3}
-    volume: 0.7
-    pitch: 1
-    spatialBlend: 0
-    maxDistance: 0
-    priority: 0
-    loop: 0
-    source: {fileID: 0}
-  - name: SpiderGrappleShoot
-    clip: {fileID: 8300000, guid: e5636e3fccab2244c897d8341ef89e78, type: 3}
-    volume: 0.25
-    pitch: 1
-    spatialBlend: 0
-    maxDistance: 0
-    priority: 0
-    loop: 0
-    source: {fileID: 0}
-  - name: Bass
-    clip: {fileID: 8300000, guid: 6509044047206fa498a0528204854af0, type: 3}
-    volume: 0.7
-    pitch: 1
-    spatialBlend: 0
-    maxDistance: 0
-    priority: 0
-    loop: 0
-    source: {fileID: 0}
-  - name: WaspBossDeath
-    clip: {fileID: 8300000, guid: d5e6b4ed3a4eba4409ee7be6b39d5046, type: 3}
-    volume: 0.7
-    pitch: 1
-    spatialBlend: 0
-    maxDistance: 0
-    priority: 0
-    loop: 0
-    source: {fileID: 0}
-  - name: ExplosionAnt
-    clip: {fileID: 8300000, guid: c6d0ef47c7b5a894b8f132f5c36346f6, type: 3}
-    volume: 0.7
-    pitch: 1
-    spatialBlend: 0
-    maxDistance: 0
-    priority: 0
-    loop: 0
-    source: {fileID: 0}
-  - name: WebShoot
-    clip: {fileID: 8300000, guid: 2d82aa41c68426a4d9118067458f0863, type: 3}
-    volume: 0.3
-    pitch: 1
-    spatialBlend: 1
-    maxDistance: 10
-    priority: 0
-    loop: 0
-    source: {fileID: 0}
-  - name: Glide
-    clip: {fileID: 8300000, guid: f790390c6111d554fabfd4b20d76ac3c, type: 3}
-    volume: 0.25
-    pitch: 1
-    spatialBlend: 0
-    maxDistance: 10
-    priority: 0
-    loop: 1
-    source: {fileID: 0}
-  - name: PlayerJump
-    clip: {fileID: 8300000, guid: 25823dd8cfd37fa41bc2d8940a63b894, type: 3}
-    volume: 0.25
-    pitch: 1
-    spatialBlend: 0
-    maxDistance: 10
-    priority: 0
-    loop: 0
-    source: {fileID: 0}
-  - name: PlayerLand
-    clip: {fileID: 8300000, guid: 12fc0929cba089d4599eb7b3ce0d1730, type: 3}
-    volume: 0.25
-    pitch: 1
-    spatialBlend: 0
-    maxDistance: 10
-    priority: 0
-    loop: 0
-    source: {fileID: 0}
-  mute: 0
 --- !u!114 &1756553166583678315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3610,6 +3445,18 @@ MonoBehaviour:
   - {fileID: 75830453}
   parallaxObjects: []
   startingCameraIndex: 2
+--- !u!114 &7795726871846043201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411717651133477611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fc7e55d11af94e47b4a953e73978b6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1411717651179960400
 GameObject:
   m_ObjectHideFlags: 0
@@ -3884,7 +3731,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1411717651133477609}
+      - m_Target: {fileID: 0}
         m_MethodName: Resume
         m_Mode: 1
         m_Arguments:
@@ -19746,11 +19593,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4550523820536806, guid: d975e66254b08984ab50d4c39dcb947f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 373.327
+      value: 162.4868
       objectReference: {fileID: 0}
     - target: {fileID: 4550523820536806, guid: d975e66254b08984ab50d4c39dcb947f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.076904
+      value: 23.78083
       objectReference: {fileID: 0}
     - target: {fileID: 4550523820536806, guid: d975e66254b08984ab50d4c39dcb947f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -19823,12 +19670,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d975e66254b08984ab50d4c39dcb947f, type: 3}
---- !u!20 &1431998707596691913 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 20290961051787748, guid: d975e66254b08984ab50d4c39dcb947f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1411717650760476717}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1407171560529681355 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4550523820536806, guid: d975e66254b08984ab50d4c39dcb947f,
@@ -19838,6 +19679,12 @@ Transform:
 --- !u!1 &1410974566347981101 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1025145325119744, guid: d975e66254b08984ab50d4c39dcb947f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1411717650760476717}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &1431998707596691913 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 20290961051787748, guid: d975e66254b08984ab50d4c39dcb947f,
     type: 3}
   m_PrefabInstance: {fileID: 1411717650760476717}
   m_PrefabAsset: {fileID: 0}
@@ -19937,7 +19784,7 @@ PrefabInstance:
         type: 3}
       propertyPath: audioManager
       value: 
-      objectReference: {fileID: 1411717651133477527}
+      objectReference: {fileID: 0}
     - target: {fileID: 5076707035970025955, guid: c5ecdca180388154aa97fcedfbca7ef4,
         type: 3}
       propertyPath: timeBetweenStep

@@ -53,17 +53,7 @@ public class Grapple : MonoBehaviour
                     DestroyBoxes();
                 }
 
-                timeToGrapple = 0;
-                target = null;
-                DisableSprintJoint();
-                GetComponentInParent<Rigidbody2D>().gravityScale = playerController.gravityDefaultValue;
-                isGrappled = false;
-                isPulling = false;
-                //Rope process
-                ropeBridge.EndPoint.position = this.transform.position;
-                rope.SetActive(false);
-                ropeBridge.SetTargetToNull();
-                ropeBridge.shouldFollow = false;
+                ExitGrapple();
             }
             if (target != null)
             {
@@ -80,6 +70,22 @@ public class Grapple : MonoBehaviour
 
         }
     }
+
+    public void ExitGrapple()
+    {
+        timeToGrapple = 0;
+        target = null;
+        DisableSprintJoint();
+        GetComponentInParent<Rigidbody2D>().gravityScale = playerController.gravityDefaultValue;
+        isGrappled = false;
+        isPulling = false;
+        //Rope process
+        ropeBridge.EndPoint.position = this.transform.position;
+        rope.SetActive(false);
+        ropeBridge.SetTargetToNull();
+        ropeBridge.shouldFollow = false;
+    }
+
     private void RotateGrapple()
     {
         Vector2 direction = GetMousePos() - (Vector2)transform.position;
@@ -99,7 +105,7 @@ public class Grapple : MonoBehaviour
             rope.SetActive(true);
             ropeBridge.SetTarget(bulletInstance.transform);
             ropeBridge.shouldFollow = true;
-            playerController.audioManager.Play("SpiderGrappleShoot");
+            AudioManager.Instance.Play("SpiderGrappleShoot");
             Destroy(bulletInstance, 0.6f);
         }
     }

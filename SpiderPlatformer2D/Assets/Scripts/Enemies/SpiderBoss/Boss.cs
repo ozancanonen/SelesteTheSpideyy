@@ -37,7 +37,7 @@ public class Boss : MonoBehaviour
     [SerializeField] int bombCount = 3;
     [SerializeField] GameObject bomb;
     [SerializeField] GameObject youWinTextObject;
-    [SerializeField] SceneLoader sceneLoader;
+    [SerializeField] SceneManager sceneLoader;
 
 
     [SerializeField] GameObject hitGroundParticle;

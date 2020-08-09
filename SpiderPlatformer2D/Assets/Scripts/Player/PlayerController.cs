@@ -38,7 +38,6 @@ public class PlayerController : MonoBehaviour
     public Slider HealthBar;
     public Image HealthBarImage;
     public GameObject DeadMenu;
-    public AudioManager audioManager;
     [SerializeField] GameObject webSnapParticle;
     [SerializeField] GameObject jumpParticle;
     [SerializeField] GameObject runParticle;
@@ -390,7 +389,7 @@ public class PlayerController : MonoBehaviour
         {
             col.GetComponent<Animator>().SetTrigger("getTaken");
             StartCoroutine(EffectPlayerFor(1, waterColor, 2, 2));
-            audioManager.Play("WaterPop");
+            AudioManager.Instance.Play("WaterPop");
             Destroy(col.gameObject, 2f);
             RestoreParticleUI.GetComponent<ParticleSystem>().Play();
             UpdateHealth(-10);
@@ -433,7 +432,7 @@ public class PlayerController : MonoBehaviour
             canvas.GetComponent<Animator>().SetTrigger("AchievementTextAnimation");
             achievementText.text = "Web Shoot Skill Obtained";
             tutorialText.text = "Press Mouse L to use";
-            audioManager.Play("SkillObtain");
+            AudioManager.Instance.Play("SkillObtain");
         }
         if (col.tag == "GrappleObtain")
         {
@@ -442,7 +441,7 @@ public class PlayerController : MonoBehaviour
             canvas.GetComponent<Animator>().SetTrigger("AchievementTextAnimation");
             achievementText.text = "Grapple Skill Obtained";
             tutorialText.text = "Press Mouse R to use";
-            audioManager.Play("SkillObtain");
+            AudioManager.Instance.Play("SkillObtain");
         }
         if (col.tag == "GlideObtain")
         {
@@ -451,7 +450,7 @@ public class PlayerController : MonoBehaviour
             canvas.GetComponent<Animator>().SetTrigger("AchievementTextAnimation");
             achievementText.text = "Glide Skill Obtained";
             tutorialText.text = "Hold Space to use";
-            audioManager.Play("SkillObtain");
+            AudioManager.Instance.Play("SkillObtain");
         }
 
 
@@ -590,7 +589,7 @@ public class PlayerController : MonoBehaviour
             {
                 isJumping = true;
                 Vector2 jumpForce = new Vector2(0, jumpSpeed);
-                audioManager.Play("PlayerJump");
+                AudioManager.Instance.Play("PlayerJump");
                 GameObject jumpParticleObject = Instantiate(jumpParticle, groundCheck.position, Quaternion.identity);
                 jumpParticleObject.transform.parent = gameObject.transform;
                 Destroy(jumpParticleObject, 2f);
@@ -638,7 +637,7 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundMask);//ağla ugur
         if (isJumping&& isGrounded)
         {
-            audioManager.Play("PlayerLand");
+            AudioManager.Instance.Play("PlayerLand");
         }
         animator.SetBool("isJumping", false);
         isJumping = false;
@@ -725,7 +724,7 @@ public class PlayerController : MonoBehaviour
                 runParticle.SetActive(true);
                 if (timeBetweenStep <= 0)
                 {
-                    audioManager.Play(stepSounds[UnityEngine.Random.Range(0, 3)]);
+                    AudioManager.Instance.Play(stepSounds[UnityEngine.Random.Range(0, 3)]);
                     timeBetweenStep = timeBetweenStepValue;
                 }
                 else
