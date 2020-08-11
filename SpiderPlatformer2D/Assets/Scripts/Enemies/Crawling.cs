@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Crawling : MonoBehaviour
+public class Crawling : MonoBehaviour,IDamagable
 {
 
     public float moveSpeed;
@@ -55,10 +55,10 @@ public class Crawling : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(isDead) { return; }
-        if(collision.gameObject.CompareTag("WebBullet"))
-        {
-            Die();
-        }
+        //if(collision.gameObject.CompareTag("WebBullet"))
+        //{
+        //    Die();
+        //}
         if(collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<PlayerController>().UpdateHealth(crawlingEnemyDamage);
@@ -72,5 +72,10 @@ public class Crawling : MonoBehaviour
         var particle = Instantiate(hitParticle, dieParticleSpawnPoint.position, Quaternion.identity);
         Destroy(particle, 1f);
         Destroy(gameObject, 0.28f);
+    }
+
+    public void GetDamage(float damageAmount, Transform direction)
+    {
+        Die();
     }
 }

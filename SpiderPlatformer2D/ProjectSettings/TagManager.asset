@@ -84,6 +84,9 @@ TagManager:
   - name: ForegroundParallax
     uniqueID: 327161089
     locked: 0
+  - name: Enemy
+    uniqueID: 1786574513
+    locked: 0
   - name: UI
     uniqueID: 2659007
     locked: 0

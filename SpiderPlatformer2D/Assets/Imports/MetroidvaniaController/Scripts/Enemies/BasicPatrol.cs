@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class BasicPatrol : MonoBehaviour
+public class BasicPatrol : MonoBehaviour,IDamagable
 {
     #region Public Variables
     public float moveSpeed;
@@ -33,7 +33,6 @@ public class BasicPatrol : MonoBehaviour
     void Update()
     {
         if (isDead) return;
-
         Move();
         if (!InsideOfLimits())
         {
@@ -50,8 +49,8 @@ public class BasicPatrol : MonoBehaviour
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Enemy_attack"))
         {
             Vector2 targetPosition = new Vector2(target.position.x, transform.position.y);
-
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+            Vector2 currentPos = transform.position;
+            transform.position = Vector2.MoveTowards(currentPos, targetPosition, moveSpeed * Time.deltaTime);
         }
     }
 
@@ -117,10 +116,16 @@ public class BasicPatrol : MonoBehaviour
             collision.gameObject.GetComponent<PlayerController>().UpdateHealth(10);
         }
 
-        if(collision.gameObject.CompareTag("WebBullet")|| collision.gameObject.GetComponent<Thorn>())
-        {
-            Die();
-        }
+        //if(collision.gameObject.CompareTag("WebBullet")|| collision.gameObject.GetComponent<Thorn>())
+        //{
+        //    Die();
+        //}
 
+    }
+
+    public void GetDamage(float damageAmount, Transform direction)
+    {
+        Debug.Log(this.gameObject.name + " is dying");
+        Die();
     }
 }
