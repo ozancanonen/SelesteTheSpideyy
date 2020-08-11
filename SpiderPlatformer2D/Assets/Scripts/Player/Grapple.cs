@@ -111,7 +111,19 @@ public class Grapple : MonoBehaviour
             Destroy(bulletInstance, 0.6f);
         }
     }
-
+    public Transform ShootForPullClick()
+    {
+        RotateGrapple();
+        timeToGrapple = 0;
+        GameObject bulletInstance = Instantiate(bullet, shootPoint.position, Quaternion.identity);
+        bulletInstance.GetComponent<GrappleBullet>().SetGrapple(this); // this method will called immedialty when bullet instance is born.
+        bulletInstance.GetComponent<Rigidbody2D>().AddForce(shootPoint.right * bulletSpeed);
+        rope.SetActive(true);
+        AudioManager.Instance.Play("SpiderGrappleShoot");
+        Debug.Log("Working");
+        Destroy(bulletInstance, 0.6f);
+        return bulletInstance.transform;
+    }
     //IEnumerator DestroyGrappleAfter(GameObject bullet)
     //{
     //    if(bullet!=null)

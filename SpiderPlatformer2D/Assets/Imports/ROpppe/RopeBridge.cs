@@ -15,6 +15,7 @@ public class RopeBridge : MonoBehaviour
     private float lineWidth = 0.1f;
     //Rope Process;
     Transform target;
+    Transform pullClickTarget;
     Transform lastPos;
     public bool shouldFollow = false;
     [SerializeField] Grapple grapple;

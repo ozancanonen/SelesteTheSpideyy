@@ -14,10 +14,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float chargeSpeed;
     [SerializeField] float timeBetweenCharge;
     [SerializeField] float timeBetweenStep;
+    [Header("GrappleProcess")]
     [SerializeField] float pullingForceMultiplier;
     [SerializeField] float grappleForceMultiplier;
     [SerializeField] float maxGrappleForce;
     [SerializeField] float grappleRadious;
+    public bool pullClick;
     [SerializeField] float playerHealth;
     [SerializeField] float groundCheckRadius;
     [SerializeField] float bossGrappleForceMultiplier;
@@ -225,6 +227,11 @@ public class PlayerController : MonoBehaviour
 
                     float distanceBetweenObjectAndPlayer = Vector3.Distance(grapple.GetTargetPos(), transform.position);
                     GameObject targetInstance = grapple.GetTarget();
+
+                    if(PullClik())
+                    {
+                        ropeBridge.StartPoint.transform.position = grapple.ShootForPullClick().position;
+                    }
                     if (distanceBetweenObjectAndPlayer >= 2f)
                     {
                         Vector3 direction = targetInstance.transform.position - transform.position;
@@ -252,6 +259,18 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+    }
+
+    private bool PullClik()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     private void DashProcess()
