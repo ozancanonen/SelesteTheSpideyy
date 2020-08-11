@@ -44,8 +44,9 @@ public class Grapple : MonoBehaviour
             }
             else if (Input.GetMouseButtonUp(1))
             {
-                ropeBridge.StartPoint.position = transform.position;
-                ropeBridge.EndPoint.position = transform.position;
+                //ropeBridge.StartPoint.position = transform.position;
+                //ropeBridge.EndPoint.position = transform.position;
+                GameManager.Instance.DeActiveSprintJoint();
                 if (DestroyWebsInGrapple != null)
                 {
                     DestroyWebsInGrapple();
@@ -99,6 +100,7 @@ public class Grapple : MonoBehaviour
         timeToGrapple += Time.deltaTime;
         if (timeToGrapple >= 0.3f)
         {
+            GameManager.Instance.isPullClick = false;
             RotateGrapple();
             timeToGrapple = 0;
             GameObject bulletInstance = Instantiate(bullet, shootPoint.position, Quaternion.identity);

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +9,8 @@ public class GrappleBullet : MonoBehaviour
     [SerializeField] GameObject grappableObject;
     [SerializeField] GameObject webParticle;
     PlayerController playerController;
-
+    //PullClick Process
+    public bool pullClickProcess = false;
     private void OnEnable()
     {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
@@ -24,20 +26,74 @@ public class GrappleBullet : MonoBehaviour
             GameObject webPrefab = Instantiate(webParticle, contact.point, angle);
             webPrefab.transform.parent = collision.transform;
             bulletInstance.transform.parent = collision.transform;
-            if (collision.gameObject.tag == "Grappable")
-            {
-                grapple.TargetHit(bulletInstance);
-            }
-            if (collision.gameObject.tag == "Pullable")
-            {
-                grapple.PullableHit(collision.gameObject);
-            }
-            Destroy(gameObject);
 
+            if (playerController.IsPlayerHoldingMouse1() && GameManager.Instance.isPullClick)
+            {
+                pullClickProcess = true;
+                Debug.Log("Going another bullet");
+                grapple.ReleaseGrapple();
+                GameManager.Instance.target = bulletInstance.gameObject;
+                GameManager.Instance.CheckSprintJoint();
+                playerController.ropeBridge.StartPoint = GetPullable();
+                //foreach(GrappleBullet bullet in FindObjectsOfType<GrappleBullet>())
+                //{
+                //    if(bullet!=this)
+                //    {
+                //        grappkl
+                //    }
+                //}
+            }
+            else
+            {
+                GameManager.Instance.isPullClick = false;
+                if (collision.gameObject.tag == "Grappable")
+                {
+                    GameManager.Instance.isPullClick = false;
+                    grapple.TargetHit(bulletInstance);
+                }
+                if (collision.gameObject.tag == "Pullable")
+                {
+                    PullClick pull = collision.gameObject.GetComponent<PullClick>();
+                    if (pull != null)
+                    {
+                        pull.isPulling = true;
+                        GameManager.Instance.isPullClick = true;
+                    }
+                    else
+                    {
+                        GameManager.Instance.isPullClick = false;
+                    }
+                    grapple.PullableHit(collision.gameObject);
+                }
+            }
+            //if(!PullClickProcess)
+            //{
+
+            //}
+            //else
+            //{
+            //    Debug.Log("I GUESS IT IS WORKING");
+            //}
+
+            Destroy(gameObject);
         }
     }
+
+    private Transform GetPullable()
+    {
+        foreach (PullClick pullClick in FindObjectsOfType<PullClick>())
+        {
+            if (pullClick.isPulling == true)
+            {
+                return pullClick.transform;
+            }
+        }
+        return null;
+    }
+
     public void SetGrapple(Grapple grapple)
     {
         this.grapple = grapple;
     }
+    
 }

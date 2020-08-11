@@ -7,6 +7,12 @@ public class GameManager : MonoBehaviour
     public delegate void ShakeCamera();
     public static event ShakeCamera shakeCurrentCam;
 
+    public delegate void EnableSprintJoint(GameObject target);
+    public static event EnableSprintJoint checkSprintJoint;
+    public delegate void DisableSprintJoint();
+    public static event DisableSprintJoint deActiveSprintJoint;
+    public GameObject target;
+    public bool isPullClick;
     #region Singleton
     private static GameManager _instance;
     public static GameManager Instance
@@ -30,5 +36,13 @@ public class GameManager : MonoBehaviour
     {
         shakeCurrentCam();
     }
+    public void CheckSprintJoint()
+    {
+        checkSprintJoint(target);
+    }
 
+    public void DeActiveSprintJoint()
+    {
+        deActiveSprintJoint();
+    }
 }

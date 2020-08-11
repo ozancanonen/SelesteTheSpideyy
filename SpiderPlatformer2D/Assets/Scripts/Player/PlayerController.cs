@@ -89,8 +89,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject wormling2;
     //RopeBridgeProcess
     [Header("RopeBridge")]
-    [SerializeField] RopeBridge ropeBridge;
-
+    [SerializeField] public RopeBridge ropeBridge;
+    [Header("PullClick")]
+    public bool isPullClick;
     //Melee Process
     [Header("Melee")]
     [SerializeField] float attackDamage = 10f;
@@ -228,7 +229,13 @@ public class PlayerController : MonoBehaviour
                     float distanceBetweenObjectAndPlayer = Vector3.Distance(grapple.GetTargetPos(), transform.position);
                     GameObject targetInstance = grapple.GetTarget();
 
-                    if(PullClik())
+                    if (IsPlayerHoldingMouse1())
+                    {
+                        if (Input.GetMouseButtonDown(0))
+                            grapple.ShootForPullClick();
+                    }
+                   
+                    if(isPullClick)
                     {
                         ropeBridge.StartPoint.transform.position = grapple.ShootForPullClick().position;
                     }
@@ -261,16 +268,16 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private bool PullClik()
+    public bool IsPlayerHoldingMouse1()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        bool playerHoldingMouse = Input.GetMouseButton(1);
+        Debug.Log(playerHoldingMouse);
+        return playerHoldingMouse;
+    }
+
+    public bool PullClik()
+    {
+        return IsPlayerHoldingMouse1();            
     }
 
     private void DashProcess()
