@@ -195,11 +195,11 @@ public class PlayerController : MonoBehaviour
                             grapple.DeActiveRope();
                             grapple.target = null;
 
-                            if (DestroyWebs!=null)
+                            if (DestroyWebs != null)
                             {
                                 DestroyWebs();
                             }
-                            if(DestroyBoxesInPlayerController!=null)
+                            if (DestroyBoxesInPlayerController != null)
                             {
                                 DestroyBoxesInPlayerController();
                             }
@@ -222,7 +222,7 @@ public class PlayerController : MonoBehaviour
                 if (grapple.GetTarget() != null)
                 {
                     //RopeBridge Segment Process 
-                    
+
                     float distanceBetweenObjectAndPlayer = Vector3.Distance(grapple.GetTargetPos(), transform.position);
                     GameObject targetInstance = grapple.GetTarget();
                     if (distanceBetweenObjectAndPlayer >= 2f)
@@ -236,7 +236,7 @@ public class PlayerController : MonoBehaviour
                             grapple.DeActiveRope();
                             grapple.target = null;
                             //DestroyBoxes(); // change this with event
-                            if (DestroyBoxesInPlayerController!=null)
+                            if (DestroyBoxesInPlayerController != null)
                             {
                                 DestroyBoxesInPlayerController();
                             }
@@ -253,7 +253,6 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
 
     private void DashProcess()
     {
@@ -338,7 +337,7 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("Attack");
         }
     }
-
+    //ATTACK PROCESS -------------------
     public void AttackEvent()
     {
         Vector3 pos = attackPos.position;
@@ -351,6 +350,13 @@ public class PlayerController : MonoBehaviour
             GameManager.Instance.ShakeEvent();
             colInfo.GetComponent<IDamagable>().GetDamage(attackDamage, transform);
         }
+    }
+    private void OnDrawGizmos()
+    {
+        Vector3 pos = attackPos.position;
+        pos += transform.right * attackOffset.x;
+        pos += transform.up * attackOffset.y;
+        Gizmos.DrawWireSphere(pos, attackRange);
     }
     private Vector2 GetAttackPos(float xAxis,float yAxis)
     {
