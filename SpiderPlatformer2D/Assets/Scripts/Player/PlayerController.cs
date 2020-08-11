@@ -347,7 +347,6 @@ public class PlayerController : MonoBehaviour
         Collider2D colInfo = Physics2D.OverlapCircle(pos, attackRange, attackMask);
         if (colInfo != null && colInfo.transform.GetComponent<IDamagable>() != null)
         {
-            GameManager.Instance.ShakeEvent();
             colInfo.GetComponent<IDamagable>().GetDamage(attackDamage, transform);
         }
     }
