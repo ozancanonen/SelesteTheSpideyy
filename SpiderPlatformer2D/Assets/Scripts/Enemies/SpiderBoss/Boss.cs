@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using Cinemachine;
 using UnityEngine.SceneManagement;
 
-public class Boss : MonoBehaviour
+public class Boss : MonoBehaviour,IDamagable
 {
 
     public GameObject player;
@@ -78,10 +78,7 @@ public class Boss : MonoBehaviour
         if (virtualCamera == null) { Debug.LogError("Virtial Camera has not been assigned"); return; }
         virtualCameraNoise = virtualCamera.GetCinemachineComponent<Cinemachine.CinemachineBasicMultiChannelPerlin>();
     }
-    private void Update()
-    {
-
-    }
+  
     public void Attack()
     {
         Vector3 pos = transform.position;
@@ -254,6 +251,37 @@ public class Boss : MonoBehaviour
             var newBomb = Instantiate(bomb, shootPoint.transform.position, Quaternion.identity);
             newBomb.GetComponent<Rigidbody2D>().AddForce(shootPoint.right * bombThrowForce);
             newBomb.GetComponent<Explode>().ExplodeBombs(2);
+        }
+    }
+
+    public void GetDamage(float damageAmount, Transform direction)
+    {
+        if (isInVulnearable || bossHealth < 0) { return; }
+        if (bossHealth > 0)
+        {
+            bossHealth -= damageAmount;
+            bossHealthSlider.value = bossHealth;
+        }
+        //if(bossHealth<=maxBossHealth/2)
+        //{
+        //    this.gameObject.GetComponent<Animator>().SetBool("isEnrage", true);
+        //}
+        else
+        {
+            //boss dead animation sounds etc.
+            Play("SpiderBossDie");
+            animator.SetTrigger("Die");
+            wallAnim.SetBool("isClosed", false);
+            youWinTextObject.SetActive(true);
+
+            defaultCamera.SetActive(true);
+            bossCamera.SetActive(false);
+            GetComponent<BoxCollider2D>().enabled = false;
+            GetComponent<CircleCollider2D>().enabled = false;
+            GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            GetComponent<Rigidbody2D>().isKinematic = true;
+            bossHealthSlider.gameObject.SetActive(false);
+            StartCoroutine(LoadCredits());
         }
     }
 }
