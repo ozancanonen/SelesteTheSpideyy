@@ -22,7 +22,7 @@ public class RopeBridge : MonoBehaviour
     public bool shouldFollow = false;
     Grapple grapple;
     public bool hasHolded = false;
-    [SerializeField] float disableTime = 10f;
+    [SerializeField] float disableTime = 5f;
     // Use this for initialization
     private void Awake()
     {
@@ -82,6 +82,7 @@ public class RopeBridge : MonoBehaviour
     }
     private void OnEnable()
     {
+        GetComponent<LineRenderer>().enabled = true;
         grapple = FindObjectOfType<Grapple>();
         Grapple.DisableRopeBridgesEvent += CheckStartPos;
         PlayerController.checkSegmentLenght += SegmentLenght1;

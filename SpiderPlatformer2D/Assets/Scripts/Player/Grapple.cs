@@ -216,6 +216,6 @@ public class Grapple : MonoBehaviour
     public void DeActiveRope()
     {
         RopeBridge rope = RopeBridgeController.Instance.GetActiveRope();
-        rope.gameObject.SetActive(false);
+        rope.gameObject.GetComponent<LineRenderer>().enabled = false ;
     }
 }

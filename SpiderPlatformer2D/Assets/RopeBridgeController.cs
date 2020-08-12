@@ -36,6 +36,7 @@ public class RopeBridgeController : MonoBehaviour
             GameObject rope = Instantiate(ropePrefab, transform.position, Quaternion.identity);
             rope.transform.parent = transform;
             rope.gameObject.SetActive(false);
+            rope.name = "Rope " + i;
             ropeBridges.Add(rope.GetComponent<RopeBridge>());
         }
     }
@@ -67,18 +68,36 @@ public class RopeBridgeController : MonoBehaviour
 
         foreach (RopeBridge rope in ropeBridges)
         {
-            if (rope.gameObject.activeInHierarchy&&!rope.shouldFollow &&rope==null) { continue; }
-            rope.gameObject.SetActive(true);
-            rope.shouldFollow = true;
-            rope.StartPoint = grapple.transform;
-            return rope;
+            //if (rope.gameObject.activeInHierarchy&&!rope.shouldFollow &&rope==null) { continue; }
+            //rope.gameObject.SetActive(true);
+            //rope.shouldFollow = true;
+            //rope.StartPoint = grapple.transform;
+            //return rope;
+            if(rope.name == "Rope 0")
+            {
+                rope.gameObject.SetActive(true);
+                rope.shouldFollow = true;
+                rope.StartPoint = grapple.transform;
+                return rope;
+            }
         }
         Debug.LogError("ROPEBRIDGECONTROLLER NULL DONDURDU");
         return null;
     }
     public RopeBridge GetActiveRope()
     {
-        return ropeBridges[spawnCount];
+        foreach (RopeBridge rope in ropeBridges)
+        {
+            if (rope.name == "Rope 0")
+            {
+                rope.gameObject.SetActive(true);
+                rope.shouldFollow = true;
+                rope.StartPoint = grapple.transform;
+                return rope;
+            }
+        }
+        Debug.LogError("ROPEBRIDGECONTROLLER NULL DONDURDU");
+        return null;
     }
     private void CheckSpawnCount(int spawnCount)
     {

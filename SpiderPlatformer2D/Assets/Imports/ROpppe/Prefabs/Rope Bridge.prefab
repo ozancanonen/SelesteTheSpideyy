@@ -111,6 +111,9 @@ MonoBehaviour:
   ropeSegLen: 0.25
   segmentLength: 35
   constraintNumber: 50
+  shouldFollow: 0
+  hasHolded: 0
+  disableTime: 5
 --- !u!120 &120267242270069436
 LineRenderer:
   m_ObjectHideFlags: 0

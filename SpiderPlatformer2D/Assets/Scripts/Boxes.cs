@@ -13,7 +13,8 @@ public class Boxes : MonoBehaviour
     {
         if (transform.childCount > 0)
         {
-            Invoke("DestroyProcess",10f);
+            transform.GetChild(0).transform.parent = RopeBridgeController.Instance.transform;
+            Invoke("DestroyProcess",5f);
         }
         else
         {
@@ -24,7 +25,6 @@ public class Boxes : MonoBehaviour
     private void DestroyProcess()
     {
         GameManager.Instance.DeActiveSprintJoint();
-        transform.GetChild(0).transform.parent = RopeBridgeController.Instance.transform;
         Destroy(gameObject);
     }
     private void OnEnable()
