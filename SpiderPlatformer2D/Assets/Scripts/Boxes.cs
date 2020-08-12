@@ -11,13 +11,22 @@ public class Boxes : MonoBehaviour
     }
     public void DestroyMe()
     {
-        Destroy(this.gameObject);
+        if (transform.childCount > 0)
+        {
+            Destroy(this.gameObject, 10f);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+      
     }
     private void OnEnable()
     {
         RopeBridge ropeBridge = /*FindObjectOfType<RopeBridge>();*/ RopeBridgeController.Instance.GetActiveRope();
-        if(ropeBridge!=null)
-        ropeBridge.SetLastPos(this.transform);
+        if (ropeBridge != null)
+            ropeBridge.SetLastPos(this.transform);
+        ropeBridge.transform.parent = this.transform;
     }
     private void OnDisable()
     {

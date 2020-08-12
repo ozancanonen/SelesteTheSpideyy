@@ -20,7 +20,13 @@ public class Grapple : MonoBehaviour
     [HideInInspector] public GameObject target;
     //RopeProcess
     Transform lastPos;
+    /// <summary>
+    /// PULL CLLİCK PROCESS /////////////////////////
 
+    public delegate void DisableRopeBridges();
+    public static event DisableRopeBridges DisableRopeBridgesEvent;
+
+    /// </summary>
     bool isPulling = false;
     float timeToGrapple = 0;
 
@@ -42,8 +48,12 @@ public class Grapple : MonoBehaviour
             {
                 //ropeBridge.StartPoint.position = transform.position;
                 //ropeBridge.EndPoint.position = transform.position;
-                GameManager.Instance.DeActiveSprintJoint();
-                ExitGrapple();
+               
+                //ExitGrapple();
+                if(DisableRopeBridgesEvent!=null)
+                {
+                    DisableRopeBridgesEvent();
+                }
 
                 if (DestroyWebsInGrapple != null)
                 {
@@ -74,6 +84,7 @@ public class Grapple : MonoBehaviour
 
     public void ExitGrapple()
     {
+        GameManager.Instance.DeActiveSprintJoint();
         timeToGrapple = 0;
         target = null;
         DisableSprintJoint();

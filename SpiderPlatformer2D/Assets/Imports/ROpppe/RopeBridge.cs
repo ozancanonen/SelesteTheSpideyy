@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using UnityEngine;
 
 public class RopeBridge : MonoBehaviour
@@ -14,12 +15,14 @@ public class RopeBridge : MonoBehaviour
     public int constraintNumber = 50;
     private float lineWidth = 0.1f;
     //Rope Process;
+    [Header("Pull Click Process")]
     Transform target;
     Transform pullClickTarget;
     Transform lastPos;
     public bool shouldFollow = false;
     Grapple grapple;
     public bool hasHolded = false;
+    [SerializeField] float disableTime = 10f;
     // Use this for initialization
     private void Awake()
     {
@@ -41,14 +44,51 @@ public class RopeBridge : MonoBehaviour
             ropeStartPoint.y -= ropeSegLen;
         }
     }
-
+   
     // Update is called once per frame
     void Update()
     {
         this.DrawRope();
         RopeFollowProcess();
     }
+    private void CheckStartPos()
+    {
+        if (StartPoint.transform.gameObject.GetComponent<PullClick>())
+        {
+            StartCoroutine(DisableRopeBridgeWithDelay(disableTime));
+            Debug.Log("DELAYLI CALISMASI LAZIM");
+        }
+        else if(!StartPoint.transform.gameObject.GetComponent<PullClick>())
+        {
+            StartPoint = grapple.transform;
+            grapple.ExitGrapple();
+            Debug.Log("DELAYSIZ CALISMASI LAZIM");
+        }
 
+    }
+    IEnumerator DisableRopeBridgeWithDelay(float time)
+    {
+        yield return new WaitForSeconds(time);
+        grapple.ExitGrapple();
+        StartPoint = grapple.transform;
+    }
+    private void OnDisable()
+    {
+        PlayerController.checkSegmentLenght -= SegmentLenght1;
+        Grapple.DisableRopeBridgesEvent -= CheckStartPos;
+        PlayerController.checkSegmentLenght -= SegmentLenght2;
+        PlayerController.checkSegmentLenght -= SegmentLenght3;
+        PlayerController.checkSegmentLenght -= SegmentLenght4;
+    }
+    private void OnEnable()
+    {
+        grapple = FindObjectOfType<Grapple>();
+        Grapple.DisableRopeBridgesEvent += CheckStartPos;
+        PlayerController.checkSegmentLenght += SegmentLenght1;
+        PlayerController.checkSegmentLenght += SegmentLenght2;
+        PlayerController.checkSegmentLenght += SegmentLenght3;
+        PlayerController.checkSegmentLenght += SegmentLenght4;
+    }
     private void SegmentLenght1(int number)
     {
         if(number ==1)
@@ -77,14 +117,7 @@ public class RopeBridge : MonoBehaviour
             ropeSegLen = 0.25f;
         }
     }
-    private void OnEnable()
-    {
-        grapple = FindObjectOfType<Grapple>();
-        PlayerController.checkSegmentLenght += SegmentLenght1;
-        PlayerController.checkSegmentLenght += SegmentLenght2;
-        PlayerController.checkSegmentLenght += SegmentLenght3;
-        PlayerController.checkSegmentLenght += SegmentLenght4;
-    }
+  
     private void RopeFollowProcess()
     {
         if (!playerController.isAlive) return;
@@ -220,14 +253,7 @@ public class RopeBridge : MonoBehaviour
         this.lastPos = lastPos;
         EndPoint.transform.position = lastPos.position;
     }
-    private void OnDisable()
-    {
-        StartPoint = grapple.transform;
-        PlayerController.checkSegmentLenght -= SegmentLenght1;
-        PlayerController.checkSegmentLenght -= SegmentLenght2;
-        PlayerController.checkSegmentLenght -= SegmentLenght3;
-        PlayerController.checkSegmentLenght -= SegmentLenght4;
-    }
+  
     //private void OnEnable()
     //{
     //    StartPoint.transform.parent = grapple.transform;

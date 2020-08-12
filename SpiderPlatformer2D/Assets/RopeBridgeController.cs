@@ -70,7 +70,7 @@ public class RopeBridgeController : MonoBehaviour
             if (rope.gameObject.activeInHierarchy&&!rope.shouldFollow) { continue; }
             rope.gameObject.SetActive(true);
             rope.shouldFollow = true;
-            rope.StartPoint.transform.position = grapple.transform.position;
+            rope.StartPoint = grapple.transform;
             return rope;
         }
         Debug.LogError("ROPEBRIDGECONTROLLER NULL DONDURDU");
