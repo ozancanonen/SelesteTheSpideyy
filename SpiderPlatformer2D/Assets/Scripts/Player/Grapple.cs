@@ -114,6 +114,7 @@ public class Grapple : MonoBehaviour
         timeToGrapple += Time.deltaTime;
         if (timeToGrapple >= 0.3f)
         {
+            RopeBridge ropeBridge =  RopeBridgeController.Instance.GetRopeFromPool();
             GameManager.Instance.isPullClick = false;
             RotateGrapple();
             timeToGrapple = 0;
@@ -130,6 +131,7 @@ public class Grapple : MonoBehaviour
     }
     public Transform ShootForPullClick()
     {
+
         RotateGrapple();
         timeToGrapple = 0;
         GameObject bulletInstance = Instantiate(bullet, shootPoint.position, Quaternion.identity);

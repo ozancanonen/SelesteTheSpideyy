@@ -15,7 +15,7 @@ public class Boxes : MonoBehaviour
     }
     private void OnEnable()
     {
-        RopeBridge ropeBridge = FindObjectOfType<RopeBridge>();
+        RopeBridge ropeBridge = /*FindObjectOfType<RopeBridge>();*/ RopeBridgeController.Instance.GetActiveRope();
         if(ropeBridge!=null)
         ropeBridge.SetLastPos(this.transform);
     }

@@ -41,28 +41,39 @@ public class RopeBridgeController : MonoBehaviour
     }
     public RopeBridge GetRopeFromPool()
     {
+        //foreach (RopeBridge rope in ropeBridges)
+        //{
+        //    if (rope.gameObject.activeInHierarchy &&!rope.hasHolded)
+        //    {
+        //        rope.gameObject.SetActive(true);
+        //        rope.StartPoint.transform.position = grapple.transform.position;
+        //        return rope;
+        //    }
+        //    else
+        //    {
+        //        spawnCount++;
+        //        if(spawnCount >= ropeNumber)
+        //        {
+        //            spawnCount = 0;
+        //        }
+        //        var newRope = ropeBridges[spawnCount];
+        //        newRope.gameObject.SetActive(true);
+        //        CheckSpawnCount(spawnCount);
+        //        return newRope;
+        //    }
+        //}
+        //Debug.LogError("Daha fazla rope yok");
+        //return null;
+
         foreach (RopeBridge rope in ropeBridges)
         {
-            if (rope.gameObject.activeInHierarchy &&!rope.hasHolded)
-            {
-                rope.gameObject.SetActive(true);
-                rope.StartPoint.transform.position = grapple.transform.position;
-                return rope;
-            }
-            else
-            {
-                spawnCount++;
-                if(spawnCount >= ropeNumber)
-                {
-                    spawnCount = 0;
-                }
-                var newRope = ropeBridges[spawnCount];
-                newRope.gameObject.SetActive(true);
-                CheckSpawnCount(spawnCount);
-                return newRope;
-            }
+            if (rope.gameObject.activeInHierarchy&&!rope.shouldFollow) { continue; }
+            rope.gameObject.SetActive(true);
+            rope.shouldFollow = true;
+            rope.StartPoint.transform.position = grapple.transform.position;
+            return rope;
         }
-        Debug.LogError("Daha fazla rope yok");
+        Debug.LogError("ROPEBRIDGECONTROLLER NULL DONDURDU");
         return null;
     }
     public RopeBridge GetActiveRope()

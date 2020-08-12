@@ -23,12 +23,11 @@ public class RopeBridge : MonoBehaviour
     // Use this for initialization
     private void Awake()
     {
-        grapple = FindObjectOfType<Grapple>();
-        if(StartPoint==null)
+        if (StartPoint == null)
         {
             StartPoint = grapple.transform;
         }
-       
+
     }
     void Start()
     {
@@ -50,6 +49,42 @@ public class RopeBridge : MonoBehaviour
         RopeFollowProcess();
     }
 
+    private void SegmentLenght1(int number)
+    {
+        if(number ==1)
+        {
+            ropeSegLen = 0.02f;
+        }
+    }
+    private void SegmentLenght2(int number)
+    {
+        if (number == 2)
+        {
+            ropeSegLen = 0.1f;
+        }
+    }
+    private void SegmentLenght3(int number)
+    {
+        if (number == 3)
+        {
+            ropeSegLen = 0.2f;
+        }
+    }
+    private void SegmentLenght4(int number)
+    {
+        if (number == 4)
+        {
+            ropeSegLen = 0.25f;
+        }
+    }
+    private void OnEnable()
+    {
+        grapple = FindObjectOfType<Grapple>();
+        PlayerController.checkSegmentLenght += SegmentLenght1;
+        PlayerController.checkSegmentLenght += SegmentLenght2;
+        PlayerController.checkSegmentLenght += SegmentLenght3;
+        PlayerController.checkSegmentLenght += SegmentLenght4;
+    }
     private void RopeFollowProcess()
     {
         if (!playerController.isAlive) return;
@@ -61,7 +96,10 @@ public class RopeBridge : MonoBehaviour
             }
             else
             {
-                EndPoint.position = lastPos.position;
+                if(grapple.GetTarget()!=null)
+                {
+                    EndPoint.position = lastPos.position;
+                }
             }
         }
     }
@@ -185,6 +223,10 @@ public class RopeBridge : MonoBehaviour
     private void OnDisable()
     {
         StartPoint = grapple.transform;
+        PlayerController.checkSegmentLenght -= SegmentLenght1;
+        PlayerController.checkSegmentLenght -= SegmentLenght2;
+        PlayerController.checkSegmentLenght -= SegmentLenght3;
+        PlayerController.checkSegmentLenght -= SegmentLenght4;
     }
     //private void OnEnable()
     //{

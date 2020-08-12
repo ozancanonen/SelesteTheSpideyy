@@ -111,8 +111,12 @@ public class PlayerController : MonoBehaviour
     private float dashTimer = 0;
     public float dashLimit = 1f;
 
-    
-    
+    //////////
+    ///ROPE SEGMENT LENGHT 
+    public delegate void SegmentLenght(int number);
+    public static event SegmentLenght checkSegmentLenght;
+    int number = 1;
+    //////////////////////
     void Start()
     {
         if(Debug.isDebugBuild)
@@ -164,23 +168,38 @@ public class PlayerController : MonoBehaviour
                 if (grapple.GetTarget() != null)
                 {
                     float distanceBetweenObjectAndPlayer = Vector3.Distance(grapple.GetTargetPos(), transform.position);
-                    ropeBridge = RopeBridgeController.Instance.GetRopeFromPool();
                     //Debug.Log(distanceBetweenObjectAndPlayer); //Gives a float value between 3 and 12
                     if (distanceBetweenObjectAndPlayer > 0 && distanceBetweenObjectAndPlayer < 3)
                     {
-                        ropeBridge.ropeSegLen = 0.02f;
+                        number = 1;
+                        if (checkSegmentLenght != null)
+                        {
+                            checkSegmentLenght(number);
+                        }
                     }
                     else if (distanceBetweenObjectAndPlayer > 3 && distanceBetweenObjectAndPlayer < 6)
                     {
-                        ropeBridge.ropeSegLen = 0.1f;
+                        number = 2;
+                        if (checkSegmentLenght != null)
+                        {
+                            checkSegmentLenght(number);
+                        }
                     }
                     else if (distanceBetweenObjectAndPlayer > 6 && distanceBetweenObjectAndPlayer < 10)
                     {
-                        ropeBridge.ropeSegLen = 0.2f;
+                        number = 3;
+                        if (checkSegmentLenght != null)
+                        {
+                            checkSegmentLenght(number);
+                        }
                     }
                     else
                     {
-                        ropeBridge.ropeSegLen = 0.25f;
+                        number = 4;
+                        if(checkSegmentLenght!=null)
+                        {
+                            checkSegmentLenght(number);
+                        }
                     }
 
                     GameObject targetInstance = grapple.GetTarget();
