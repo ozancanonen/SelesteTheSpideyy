@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RopeBridge : MonoBehaviour
 {
-    public Transform StartPoint;
+    public Transform StartPoint = null;
     public Transform EndPoint;
     PlayerController playerController;
     private LineRenderer lineRenderer;
@@ -18,8 +18,17 @@ public class RopeBridge : MonoBehaviour
     Transform pullClickTarget;
     Transform lastPos;
     public bool shouldFollow = false;
-    [SerializeField] Grapple grapple;
+    Grapple grapple;
     // Use this for initialization
+    private void Awake()
+    {
+        grapple = GetComponentInParent<Grapple>();
+        if(StartPoint==null)
+        {
+            StartPoint = grapple.transform;
+        }
+       
+    }
     void Start()
     {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();

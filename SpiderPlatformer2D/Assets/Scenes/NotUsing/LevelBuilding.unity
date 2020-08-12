@@ -2433,6 +2433,11 @@ PrefabInstance:
       propertyPath: springJoint
       value: 
       objectReference: {fileID: 1727102800}
+    - target: {fileID: 6947217938713511433, guid: 5c0852e4e4a856d40ac925509d481b4c,
+        type: 3}
+      propertyPath: forceMultiplier
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c0852e4e4a856d40ac925509d481b4c, type: 3}
 --- !u!114 &792094720 stripped
@@ -3638,16 +3643,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 402706851}
     m_Modifications:
-    - target: {fileID: 8783142519655335404, guid: 017f31f11d4c58541a20e4b016ad08f2,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 8783142519655335404, guid: 017f31f11d4c58541a20e4b016ad08f2,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.08
-      objectReference: {fileID: 0}
     - target: {fileID: 8783142520733325305, guid: 017f31f11d4c58541a20e4b016ad08f2,
         type: 3}
       propertyPath: m_Name
@@ -3708,40 +3703,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8783142520733325308, guid: 017f31f11d4c58541a20e4b016ad08f2,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8783142520733325308, guid: 017f31f11d4c58541a20e4b016ad08f2,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.7391304
-      objectReference: {fileID: 0}
-    - target: {fileID: 8783142520733325308, guid: 017f31f11d4c58541a20e4b016ad08f2,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3.0769231
-      objectReference: {fileID: 0}
-    - target: {fileID: 8783142520733325310, guid: 017f31f11d4c58541a20e4b016ad08f2,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 8783142520733325311, guid: 017f31f11d4c58541a20e4b016ad08f2,
         type: 3}
       propertyPath: StartPoint
       value: 
-      objectReference: {fileID: 402706851}
-    - target: {fileID: 8783142520733325311, guid: 017f31f11d4c58541a20e4b016ad08f2,
-        type: 3}
-      propertyPath: ropeSegLen
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8783142520733325311, guid: 017f31f11d4c58541a20e4b016ad08f2,
-        type: 3}
-      propertyPath: segmentLength
-      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8783142520733325311, guid: 017f31f11d4c58541a20e4b016ad08f2,
         type: 3}
@@ -4319,27 +4284,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1234893460}
   m_PrefabAsset: {fileID: 0}
---- !u!50 &1738339925
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1738339923}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &1738339927 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8783142520733325311, guid: 017f31f11d4c58541a20e4b016ad08f2,
