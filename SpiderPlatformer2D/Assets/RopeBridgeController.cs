@@ -67,7 +67,7 @@ public class RopeBridgeController : MonoBehaviour
 
         foreach (RopeBridge rope in ropeBridges)
         {
-            if (rope.gameObject.activeInHierarchy&&!rope.shouldFollow) { continue; }
+            if (rope.gameObject.activeInHierarchy&&!rope.shouldFollow &&rope==null) { continue; }
             rope.gameObject.SetActive(true);
             rope.shouldFollow = true;
             rope.StartPoint = grapple.transform;
