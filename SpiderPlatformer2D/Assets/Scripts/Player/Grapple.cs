@@ -47,6 +47,7 @@ public class Grapple : MonoBehaviour
                 //ropeBridge.StartPoint.position = transform.position;
                 //ropeBridge.EndPoint.position = transform.position;
                 GameManager.Instance.DeActiveSprintJoint();
+                
                 if (DestroyWebsInGrapple != null)
                 {
                     DestroyWebsInGrapple();

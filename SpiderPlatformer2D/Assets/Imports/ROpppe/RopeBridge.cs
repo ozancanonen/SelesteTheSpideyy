@@ -22,7 +22,7 @@ public class RopeBridge : MonoBehaviour
     // Use this for initialization
     private void Awake()
     {
-        grapple = GetComponentInParent<Grapple>();
+        grapple = FindObjectOfType<Grapple>();
         if(StartPoint==null)
         {
             StartPoint = grapple.transform;
