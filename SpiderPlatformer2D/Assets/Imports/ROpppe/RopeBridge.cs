@@ -19,6 +19,7 @@ public class RopeBridge : MonoBehaviour
     Transform lastPos;
     public bool shouldFollow = false;
     Grapple grapple;
+    public bool hasHolded = false;
     // Use this for initialization
     private void Awake()
     {
@@ -181,7 +182,14 @@ public class RopeBridge : MonoBehaviour
         this.lastPos = lastPos;
         EndPoint.transform.position = lastPos.position;
     }
-
-   
+    private void OnDisable()
+    {
+        StartPoint = grapple.transform;
+    }
+    //private void OnEnable()
+    //{
+    //    StartPoint.transform.parent = grapple.transform;
+    //    StartPoint.transform.position = grapple.transform.position;
+    //}
 
 }

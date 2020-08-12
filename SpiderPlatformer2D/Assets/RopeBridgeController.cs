@@ -7,8 +7,10 @@ public class RopeBridgeController : MonoBehaviour
 {
     private static RopeBridgeController _instance;
     [SerializeField] int ropeNumber = 5;
-    [SerializeField] RopeBridge ropePrefab;
-    public Queue<RopeBridge> ropeBridges;
+    [SerializeField] GameObject ropePrefab;
+    public List<RopeBridge> ropeBridges;
+    [SerializeField] Grapple grapple;
+    int spawnCount = 0;
     public static RopeBridgeController Instance
     {
         get
@@ -23,7 +25,6 @@ public class RopeBridgeController : MonoBehaviour
     private void Awake()
     {
         _instance = this;
-        ropeBridges = new Queue<RopeBridge>();
         InstantiateRopeBridges();
 
     }
@@ -32,15 +33,47 @@ public class RopeBridgeController : MonoBehaviour
     {
         for (int i = 0; i < ropeNumber; i++)
         {
-            RopeBridge rope = Instantiate(ropePrefab, transform.position, Quaternion.identity);
+            GameObject rope = Instantiate(ropePrefab, transform.position, Quaternion.identity);
             rope.transform.parent = transform;
             rope.gameObject.SetActive(false);
-            ropeBridges.Enqueue(rope);
+            ropeBridges.Add(rope.GetComponent<RopeBridge>());
         }
     }
-
-    public RopeBridge GetRopeBridge()
+    public RopeBridge GetRopeFromPool()
     {
+        foreach (RopeBridge rope in ropeBridges)
+        {
+            if (rope.gameObject.activeInHierarchy &&!rope.hasHolded)
+            {
+                rope.gameObject.SetActive(true);
+                rope.StartPoint.transform.position = grapple.transform.position;
+                return rope;
+            }
+            else
+            {
+                spawnCount++;
+                if(spawnCount >= ropeNumber)
+                {
+                    spawnCount = 0;
+                }
+                var newRope = ropeBridges[spawnCount];
+                newRope.gameObject.SetActive(true);
+                CheckSpawnCount(spawnCount);
+                return newRope;
+            }
+        }
+        Debug.LogError("Daha fazla rope yok");
         return null;
+    }
+    public RopeBridge GetActiveRope()
+    {
+        return ropeBridges[spawnCount];
+    }
+    private void CheckSpawnCount(int spawnCount)
+    {
+        if(spawnCount > ropeNumber)
+        {
+            Debug.Log("You have reached maximum number");
+        }
     }
 }

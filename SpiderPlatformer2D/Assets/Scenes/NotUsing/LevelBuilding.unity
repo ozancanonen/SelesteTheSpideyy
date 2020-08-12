@@ -258,12 +258,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392826489}
   m_CullTransparentMesh: 0
---- !u!4 &402706851 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1411717650959248066, guid: 53307db50e88183438e3a6d63f6d1982,
-    type: 3}
-  m_PrefabInstance: {fileID: 831487222}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &402706852 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1411717650959248064, guid: 53307db50e88183438e3a6d63f6d1982,
@@ -2626,12 +2620,12 @@ PrefabInstance:
         type: 3}
       propertyPath: webEndPos
       value: 
-      objectReference: {fileID: 1422371614}
+      objectReference: {fileID: 0}
     - target: {fileID: 1411717650959248064, guid: 53307db50e88183438e3a6d63f6d1982,
         type: 3}
       propertyPath: rope
       value: 
-      objectReference: {fileID: 1738339923}
+      objectReference: {fileID: 0}
     - target: {fileID: 1411717650959248067, guid: 53307db50e88183438e3a6d63f6d1982,
         type: 3}
       propertyPath: m_Enabled
@@ -2778,7 +2772,7 @@ PrefabInstance:
         type: 3}
       propertyPath: ropeBridge
       value: 
-      objectReference: {fileID: 1738339927}
+      objectReference: {fileID: 0}
     - target: {fileID: 1411717651217649664, guid: 53307db50e88183438e3a6d63f6d1982,
         type: 3}
       propertyPath: attackMask.m_Bits
@@ -3636,85 +3630,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a181dbe92415fa14ba940cb9231a404e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &1234893460
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 402706851}
-    m_Modifications:
-    - target: {fileID: 8783142520733325305, guid: 017f31f11d4c58541a20e4b016ad08f2,
-        type: 3}
-      propertyPath: m_Name
-      value: Rope
-      objectReference: {fileID: 0}
-    - target: {fileID: 8783142520733325308, guid: 017f31f11d4c58541a20e4b016ad08f2,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8783142520733325308, guid: 017f31f11d4c58541a20e4b016ad08f2,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.4461539
-      objectReference: {fileID: 0}
-    - target: {fileID: 8783142520733325308, guid: 017f31f11d4c58541a20e4b016ad08f2,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8783142520733325308, guid: 017f31f11d4c58541a20e4b016ad08f2,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8783142520733325308, guid: 017f31f11d4c58541a20e4b016ad08f2,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8783142520733325308, guid: 017f31f11d4c58541a20e4b016ad08f2,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8783142520733325308, guid: 017f31f11d4c58541a20e4b016ad08f2,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8783142520733325308, guid: 017f31f11d4c58541a20e4b016ad08f2,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8783142520733325308, guid: 017f31f11d4c58541a20e4b016ad08f2,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8783142520733325308, guid: 017f31f11d4c58541a20e4b016ad08f2,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8783142520733325308, guid: 017f31f11d4c58541a20e4b016ad08f2,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8783142520733325311, guid: 017f31f11d4c58541a20e4b016ad08f2,
-        type: 3}
-      propertyPath: StartPoint
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8783142520733325311, guid: 017f31f11d4c58541a20e4b016ad08f2,
-        type: 3}
-      propertyPath: grapple
-      value: 
-      objectReference: {fileID: 402706852}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 017f31f11d4c58541a20e4b016ad08f2, type: 3}
 --- !u!1 &1270430577
 GameObject:
   m_ObjectHideFlags: 0
@@ -3916,12 +3831,53 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c4a33a90e1e1a94a902e9485a977f78, type: 3}
---- !u!1 &1422371614 stripped
+--- !u!1 &1357136892
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 8783142519010703175, guid: 017f31f11d4c58541a20e4b016ad08f2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1234893460}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1357136894}
+  - component: {fileID: 1357136893}
+  m_Layer: 0
+  m_Name: RopeBridge Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1357136893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357136892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35790d98396308043826f99c6de32779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ropeNumber: 5
+  ropePrefab: {fileID: 1791406145271830, guid: 379a2eb4f3866bd4bb88ba784a5ee069, type: 3}
+  ropeBridges: []
+  grapple: {fileID: 402706852}
+--- !u!4 &1357136894
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357136892}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1478439763 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1411717649847537052, guid: 53307db50e88183438e3a6d63f6d1982,
@@ -4148,30 +4104,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1673987592 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1791406145271830, guid: 379a2eb4f3866bd4bb88ba784a5ee069,
-    type: 3}
-  m_PrefabInstance: {fileID: 1529054682}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1673987593 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4808875396013848, guid: 379a2eb4f3866bd4bb88ba784a5ee069,
     type: 3}
   m_PrefabInstance: {fileID: 1529054682}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1673987595 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5220317895075318524, guid: 379a2eb4f3866bd4bb88ba784a5ee069,
-    type: 3}
-  m_PrefabInstance: {fileID: 1529054682}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1673987592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6a50f99ce1d7fb4ebada04c0f750e6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1727102794 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6252043430514470558, guid: 5c0852e4e4a856d40ac925509d481b4c,
@@ -4278,24 +4216,6 @@ Transform:
   m_Father: {fileID: 278991595}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!1 &1738339923 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8783142520733325305, guid: 017f31f11d4c58541a20e4b016ad08f2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1234893460}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1738339927 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8783142520733325311, guid: 017f31f11d4c58541a20e4b016ad08f2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1234893460}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1738339923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6a50f99ce1d7fb4ebada04c0f750e6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1757093896
 GameObject:
   m_ObjectHideFlags: 0
@@ -14309,7 +14229,6 @@ MonoBehaviour:
   antSwarmObject: {fileID: 0}
   wormling1: {fileID: 0}
   wormling2: {fileID: 0}
-  ropeBridge: {fileID: 1673987595}
   isPullClick: 0
   attackDamage: 10
   attackOffset: {x: 0, y: 0}
@@ -15260,7 +15179,6 @@ MonoBehaviour:
   springJoint: {fileID: 1858105193142737963}
   isGrappled: 0
   target: {fileID: 0}
-  rope: {fileID: 1673987592}
 --- !u!212 &1858105193535497963
 SpriteRenderer:
   m_ObjectHideFlags: 0

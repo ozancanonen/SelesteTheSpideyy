@@ -34,7 +34,7 @@ public class GrappleBullet : MonoBehaviour
                 grapple.ReleaseGrapple();
                 GameManager.Instance.target = bulletInstance.gameObject;
                 GameManager.Instance.CheckSprintJoint();
-                playerController.ropeBridge.StartPoint = GetPullable();
+                RopeBridgeController.Instance.GetActiveRope().StartPoint = GetPullable();
                 //foreach(GrappleBullet bullet in FindObjectsOfType<GrappleBullet>())
                 //{
                 //    if(bullet!=this)
@@ -85,10 +85,12 @@ public class GrappleBullet : MonoBehaviour
         {
             if (pullClick.isPulling == true)
             {
+                Debug.Log("GETPULLABLE WORKING");
                 return pullClick.transform;
             }
         }
-        return null;
+        Debug.Log("SAPITTI");
+        return transform;
     }
 
     public void SetGrapple(Grapple grapple)

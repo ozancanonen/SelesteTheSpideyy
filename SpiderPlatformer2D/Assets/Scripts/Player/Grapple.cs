@@ -19,8 +19,6 @@ public class Grapple : MonoBehaviour
     [HideInInspector] public bool isGrappled = false;
     [HideInInspector] public GameObject target;
     //RopeProcess
-    [SerializeField] GameObject rope;
-    RopeBridge ropeBridge;
     Transform lastPos;
 
     bool isPulling = false;
@@ -30,8 +28,6 @@ public class Grapple : MonoBehaviour
     {
         //lineRenderer.enabled = false;
         springJoint.enabled = false;
-        ropeBridge = rope.GetComponent<RopeBridge>();
-        rope.SetActive(false);
     }
     private void Update()
     {
@@ -47,7 +43,8 @@ public class Grapple : MonoBehaviour
                 //ropeBridge.StartPoint.position = transform.position;
                 //ropeBridge.EndPoint.position = transform.position;
                 GameManager.Instance.DeActiveSprintJoint();
-                
+                ExitGrapple();
+
                 if (DestroyWebsInGrapple != null)
                 {
                     DestroyWebsInGrapple();
@@ -57,7 +54,7 @@ public class Grapple : MonoBehaviour
                     DestroyBoxes();
                 }
 
-                ExitGrapple();
+
             }
             if (target != null)
             {
@@ -84,12 +81,28 @@ public class Grapple : MonoBehaviour
         isGrappled = false;
         isPulling = false;
         //Rope process
-        ropeBridge.EndPoint.position = this.transform.position;
-        rope.SetActive(false);
-        ropeBridge.SetTargetToNull();
-        ropeBridge.shouldFollow = false;
+        RopeBridge rope = RopeBridgeController.Instance.GetActiveRope();
+        rope.EndPoint.position = this.transform.position;
+        rope.gameObject.SetActive(false);
+        rope.SetTargetToNull();
+        rope.shouldFollow = false;
     }
-
+    IEnumerator ExitGrappleWithDelay(float time)
+    {
+        yield return new WaitForSeconds(time);
+        timeToGrapple = 0;
+        target = null;
+        DisableSprintJoint();
+        GetComponentInParent<Rigidbody2D>().gravityScale = playerController.gravityDefaultValue;
+        isGrappled = false;
+        isPulling = false;
+        //Rope process
+        RopeBridge rope = RopeBridgeController.Instance.GetActiveRope();
+        rope.EndPoint.position = this.transform.position;
+        rope.gameObject.SetActive(false);
+        rope.SetTargetToNull();
+        rope.shouldFollow = false;
+    }
     private void RotateGrapple()
     {
         Vector2 direction = GetMousePos() - (Vector2)transform.position;
@@ -107,9 +120,10 @@ public class Grapple : MonoBehaviour
             GameObject bulletInstance = Instantiate(bullet, shootPoint.position, Quaternion.identity);
             bulletInstance.GetComponent<GrappleBullet>().SetGrapple(this); // this method will called immedialty when bullet instance is born.
             bulletInstance.GetComponent<Rigidbody2D>().AddForce(shootPoint.right * bulletSpeed);
-            rope.SetActive(true);
-            ropeBridge.SetTarget(bulletInstance.transform);
-            ropeBridge.shouldFollow = true;
+            RopeBridge rope = RopeBridgeController.Instance.GetActiveRope();
+            rope.gameObject.SetActive(true);
+            rope.SetTarget(bulletInstance.transform);
+            rope.shouldFollow = true;
             AudioManager.Instance.Play("SpiderGrappleShoot");
             Destroy(bulletInstance, 0.6f);
         }
@@ -121,7 +135,8 @@ public class Grapple : MonoBehaviour
         GameObject bulletInstance = Instantiate(bullet, shootPoint.position, Quaternion.identity);
         bulletInstance.GetComponent<GrappleBullet>().SetGrapple(this); // this method will called immedialty when bullet instance is born.
         bulletInstance.GetComponent<Rigidbody2D>().AddForce(shootPoint.right * bulletSpeed);
-        rope.SetActive(true);
+        RopeBridge rope = RopeBridgeController.Instance.GetActiveRope();
+        rope.gameObject.SetActive(true);
         AudioManager.Instance.Play("SpiderGrappleShoot");
         Debug.Log("Working");
         Destroy(bulletInstance, 0.6f);
@@ -187,6 +202,7 @@ public class Grapple : MonoBehaviour
     }
     public void DeActiveRope()
     {
-        rope.SetActive(false);
+        RopeBridge rope = RopeBridgeController.Instance.GetActiveRope();
+        rope.gameObject.SetActive(false);
     }
 }

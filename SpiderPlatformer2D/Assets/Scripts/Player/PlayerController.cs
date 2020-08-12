@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject wormling2;
     //RopeBridgeProcess
     [Header("RopeBridge")]
-    [SerializeField] public RopeBridge ropeBridge;
+    RopeBridge ropeBridge;
     [Header("PullClick")]
     public bool isPullClick;
     //Melee Process
@@ -164,6 +164,7 @@ public class PlayerController : MonoBehaviour
                 if (grapple.GetTarget() != null)
                 {
                     float distanceBetweenObjectAndPlayer = Vector3.Distance(grapple.GetTargetPos(), transform.position);
+                    ropeBridge = RopeBridgeController.Instance.GetRopeFromPool();
                     //Debug.Log(distanceBetweenObjectAndPlayer); //Gives a float value between 3 and 12
                     if (distanceBetweenObjectAndPlayer > 0 && distanceBetweenObjectAndPlayer < 3)
                     {
