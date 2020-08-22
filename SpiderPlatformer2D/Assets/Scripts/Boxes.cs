@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Boxes : MonoBehaviour
 {
+    RopeBridge ropeBridge;
     private void Awake()
     {
         PlayerController.DestroyBoxesInPlayerController += DestroyMe;
@@ -14,7 +15,10 @@ public class Boxes : MonoBehaviour
        
         if (transform.childCount > 0)
         {
-            transform.GetChild(0).transform.parent = RopeBridgeController.Instance.transform;
+            ropeBridge =transform.GetChild(0).GetComponent<RopeBridge>();
+            ropeBridge.transform.parent = RopeBridgeController.Instance.transform;
+            ropeBridge.canReturn = false;
+            //transform.GetChild(0).GetComponent<LineRenderer>().enabled = true;
             Grapple.isPulling = false;
             Invoke("DestroyProcess",5f);
         }
@@ -27,6 +31,8 @@ public class Boxes : MonoBehaviour
     private void DestroyProcess()
     {
         GameManager.Instance.DeActiveSprintJoint();
+        //transform.GetChild(0).GetComponent<RopeBridge>().canReturn = true; artık child ' ı değil ki
+        ropeBridge.canReturn = true;
         Destroy(gameObject);
     }
     private void OnEnable()

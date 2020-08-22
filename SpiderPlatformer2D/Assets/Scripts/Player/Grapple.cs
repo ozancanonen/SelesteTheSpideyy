@@ -159,7 +159,7 @@ public class Grapple : MonoBehaviour
         GameObject bulletInstance = Instantiate(bullet, shootPoint.position, Quaternion.identity);
         bulletInstance.GetComponent<GrappleBullet>().SetGrapple(this); // this method will called immedialty when bullet instance is born.
         bulletInstance.GetComponent<Rigidbody2D>().AddForce(shootPoint.right * bulletSpeed);
-        RopeBridge rope = RopeBridgeController.Instance.GetActiveRope(); //getactiverope idi
+        RopeBridge rope = RopeBridgeController.Instance.GetActiveRope();
         rope.gameObject.SetActive(true);
         AudioManager.Instance.Play("SpiderGrappleShoot");
         Debug.Log("Working");
@@ -227,6 +227,7 @@ public class Grapple : MonoBehaviour
     public void DeActiveRope()
     {
         RopeBridge rope = RopeBridgeController.Instance.GetActiveRope();
+        rope.canReturn = true;
         rope.gameObject.GetComponent<LineRenderer>().enabled = false ;
     }
 }

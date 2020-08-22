@@ -59,23 +59,23 @@ public class RopeBridgeController : MonoBehaviour
         //    return rope;
         //}
         //}
-        if (!ropeBridges[0].StartPoint.gameObject.GetComponent<PullClick>())
+        if (!ropeBridges[0].StartPoint.gameObject.GetComponent<PullClick>()&&ropeBridges[0].canReturn)
         {
             return ropeBridges[0];
         }
-        else if (!ropeBridges[1].StartPoint.gameObject.GetComponent<PullClick>())
+        else if (!ropeBridges[1].StartPoint.gameObject.GetComponent<PullClick>() && ropeBridges[1].canReturn)
         {
             return ropeBridges[1];
         }
-        else if (!ropeBridges[2].StartPoint.gameObject.GetComponent<PullClick>())
+        else if (!ropeBridges[2].StartPoint.gameObject.GetComponent<PullClick>() && ropeBridges[2].canReturn)
         {
             return ropeBridges[2];
         }
-        else if (!ropeBridges[3].StartPoint.gameObject.GetComponent<PullClick>())
+        else if (!ropeBridges[3].StartPoint.gameObject.GetComponent<PullClick>() && ropeBridges[3].canReturn)
         {
             return ropeBridges[3];
         }
-        else if (!ropeBridges[4].StartPoint.gameObject.GetComponent<PullClick>())
+        else if (!ropeBridges[4].StartPoint.gameObject.GetComponent<PullClick>() && ropeBridges[4].canReturn)
         {
             return ropeBridges[4];
         }
@@ -84,23 +84,23 @@ public class RopeBridgeController : MonoBehaviour
     }
     public RopeBridge GetActiveRope()
     {
-        if (!ropeBridges[0].StartPoint.gameObject.GetComponent<PullClick>())
+        if (!ropeBridges[0].StartPoint.gameObject.GetComponent<PullClick>() && ropeBridges[0].canReturn)
         {
             return ropeBridges[0];
         }
-        else if (!ropeBridges[1].StartPoint.gameObject.GetComponent<PullClick>())
+        else if (!ropeBridges[1].StartPoint.gameObject.GetComponent<PullClick>() && ropeBridges[1].canReturn)
         {
             return ropeBridges[1];
         }
-        else if (!ropeBridges[2].StartPoint.gameObject.GetComponent<PullClick>())
+        else if (!ropeBridges[2].StartPoint.gameObject.GetComponent<PullClick>() && ropeBridges[2].canReturn)
         {
             return ropeBridges[2];
         }
-        else if (!ropeBridges[3].StartPoint.gameObject.GetComponent<PullClick>())
+        else if (!ropeBridges[3].StartPoint.gameObject.GetComponent<PullClick>() && ropeBridges[3].canReturn)
         {
             return ropeBridges[3];
         }
-        else if (!ropeBridges[4].StartPoint.gameObject.GetComponent<PullClick>())
+        else if (!ropeBridges[4].StartPoint.gameObject.GetComponent<PullClick>() && ropeBridges[4].canReturn)
         {
             return ropeBridges[4];
         }
