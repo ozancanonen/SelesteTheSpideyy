@@ -11,9 +11,11 @@ public class Boxes : MonoBehaviour
     }
     public void DestroyMe()
     {
+       
         if (transform.childCount > 0)
         {
             transform.GetChild(0).transform.parent = RopeBridgeController.Instance.transform;
+            Grapple.isPulling = false;
             Invoke("DestroyProcess",5f);
         }
         else
@@ -29,6 +31,7 @@ public class Boxes : MonoBehaviour
     }
     private void OnEnable()
     {
+       
         RopeBridge ropeBridge = /*FindObjectOfType<RopeBridge>();*/ RopeBridgeController.Instance.GetActiveRope();
         if (ropeBridge != null)
             ropeBridge.SetLastPos(this.transform);

@@ -16,7 +16,8 @@ public class Grapple : MonoBehaviour
     public LineRenderer lineRenderer;
     public SpringJoint2D springJoint;
     public static bool canGrapple = false;
-    [HideInInspector] public bool isGrappled = false;
+    public static bool isGrappled = false;
+    public static bool isPulling = false;
     [HideInInspector] public GameObject target;
     //RopeProcess
     Transform lastPos;
@@ -27,7 +28,7 @@ public class Grapple : MonoBehaviour
     public static event DisableRopeBridges DisableRopeBridgesEvent;
 
     /// </summary>
-    bool isPulling = false;
+   
     float timeToGrapple = 0;
 
     private void Start()
@@ -92,8 +93,16 @@ public class Grapple : MonoBehaviour
         isGrappled = false;
         isPulling = false;
         //Rope process
-        RopeBridge rope = RopeBridgeController.Instance.GetActiveRope();
-        rope.EndPoint.position = this.transform.position;
+        RopeBridge rope = RopeBridgeController.Instance.GetPulledRope(); //Burayı düzeltmem lazım
+        if(rope!=null)
+        {
+            Debug.Log(rope.name);
+        }
+        if(rope==null)//ACABAAA ? 
+        {
+            rope = RopeBridgeController.Instance.GetActiveRope();
+        }
+        rope.EndPoint.position = this.transform.position; //transform.positin = this.transform.position idi
         rope.gameObject.SetActive(false);
         rope.SetTargetToNull();
         rope.shouldFollow = false;
@@ -125,14 +134,16 @@ public class Grapple : MonoBehaviour
         timeToGrapple += Time.deltaTime;
         if (timeToGrapple >= 0.3f)
         {
-            RopeBridge ropeBridge =  RopeBridgeController.Instance.GetRopeFromPool();
+            Debug.Log("Rope Shoot");
+            //RopeBridge ropeBridge =  RopeBridgeController.Instance.GetRopeFromPool();
             GameManager.Instance.isPullClick = false;
             RotateGrapple();
             timeToGrapple = 0;
             GameObject bulletInstance = Instantiate(bullet, shootPoint.position, Quaternion.identity);
             bulletInstance.GetComponent<GrappleBullet>().SetGrapple(this); // this method will called immedialty when bullet instance is born.
             bulletInstance.GetComponent<Rigidbody2D>().AddForce(shootPoint.right * bulletSpeed);
-            RopeBridge rope = RopeBridgeController.Instance.GetActiveRope();
+            RopeBridge rope = RopeBridgeController.Instance.GetRopeFromPool(); //getactiverope idi
+            Debug.Log(rope.name);
             rope.gameObject.SetActive(true);
             rope.SetTarget(bulletInstance.transform);
             rope.shouldFollow = true;
@@ -148,7 +159,7 @@ public class Grapple : MonoBehaviour
         GameObject bulletInstance = Instantiate(bullet, shootPoint.position, Quaternion.identity);
         bulletInstance.GetComponent<GrappleBullet>().SetGrapple(this); // this method will called immedialty when bullet instance is born.
         bulletInstance.GetComponent<Rigidbody2D>().AddForce(shootPoint.right * bulletSpeed);
-        RopeBridge rope = RopeBridgeController.Instance.GetActiveRope();
+        RopeBridge rope = RopeBridgeController.Instance.GetActiveRope(); //getactiverope idi
         rope.gameObject.SetActive(true);
         AudioManager.Instance.Play("SpiderGrappleShoot");
         Debug.Log("Working");

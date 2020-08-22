@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class RopeBridgeController : MonoBehaviour
@@ -42,61 +43,79 @@ public class RopeBridgeController : MonoBehaviour
     }
     public RopeBridge GetRopeFromPool()
     {
+        Debug.Log("Rope Almaya calıstı");
         //foreach (RopeBridge rope in ropeBridges)
         //{
-        //    if (rope.gameObject.activeInHierarchy &&!rope.hasHolded)
-        //    {
-        //        rope.gameObject.SetActive(true);
-        //        rope.StartPoint.transform.position = grapple.transform.position;
-        //        return rope;
-        //    }
-        //    else
-        //    {
-        //        spawnCount++;
-        //        if(spawnCount >= ropeNumber)
-        //        {
-        //            spawnCount = 0;
-        //        }
-        //        var newRope = ropeBridges[spawnCount];
-        //        newRope.gameObject.SetActive(true);
-        //        CheckSpawnCount(spawnCount);
-        //        return newRope;
-        //    }
+        //if (rope.gameObject.activeInHierarchy&&!rope.shouldFollow &&rope==null) { continue; }
+        //rope.gameObject.SetActive(true);
+        //rope.shouldFollow = true;
+        //rope.StartPoint = grapple.transform;
+        //return rope;
+        //if(rope.name == "Rope 0")
+        //{
+        //    rope.gameObject.SetActive(true);
+        //    rope.shouldFollow = true;
+        //    rope.StartPoint = grapple.transform;
+        //    return rope;
         //}
-        //Debug.LogError("Daha fazla rope yok");
-        //return null;
-
-        foreach (RopeBridge rope in ropeBridges)
+        //}
+        if (!ropeBridges[0].StartPoint.gameObject.GetComponent<PullClick>())
         {
-            //if (rope.gameObject.activeInHierarchy&&!rope.shouldFollow &&rope==null) { continue; }
-            //rope.gameObject.SetActive(true);
-            //rope.shouldFollow = true;
-            //rope.StartPoint = grapple.transform;
-            //return rope;
-            if(rope.name == "Rope 0")
-            {
-                rope.gameObject.SetActive(true);
-                rope.shouldFollow = true;
-                rope.StartPoint = grapple.transform;
-                return rope;
-            }
+            return ropeBridges[0];
+        }
+        else if (!ropeBridges[1].StartPoint.gameObject.GetComponent<PullClick>())
+        {
+            return ropeBridges[1];
+        }
+        else if (!ropeBridges[2].StartPoint.gameObject.GetComponent<PullClick>())
+        {
+            return ropeBridges[2];
+        }
+        else if (!ropeBridges[3].StartPoint.gameObject.GetComponent<PullClick>())
+        {
+            return ropeBridges[3];
+        }
+        else if (!ropeBridges[4].StartPoint.gameObject.GetComponent<PullClick>())
+        {
+            return ropeBridges[4];
         }
         Debug.LogError("ROPEBRIDGECONTROLLER NULL DONDURDU");
         return null;
     }
     public RopeBridge GetActiveRope()
     {
+        if (!ropeBridges[0].StartPoint.gameObject.GetComponent<PullClick>())
+        {
+            return ropeBridges[0];
+        }
+        else if (!ropeBridges[1].StartPoint.gameObject.GetComponent<PullClick>())
+        {
+            return ropeBridges[1];
+        }
+        else if (!ropeBridges[2].StartPoint.gameObject.GetComponent<PullClick>())
+        {
+            return ropeBridges[2];
+        }
+        else if (!ropeBridges[3].StartPoint.gameObject.GetComponent<PullClick>())
+        {
+            return ropeBridges[3];
+        }
+        else if (!ropeBridges[4].StartPoint.gameObject.GetComponent<PullClick>())
+        {
+            return ropeBridges[4];
+        }
+        Debug.LogError("ROPEBRIDGECONTROLLER NULL DONDURDU");
+        return null;
+    }
+    public RopeBridge GetPulledRope()
+    {
         foreach (RopeBridge rope in ropeBridges)
         {
-            if (rope.name == "Rope 0")
+            if (rope.StartPoint.GetComponent<PullClick>())
             {
-                rope.gameObject.SetActive(true);
-                rope.shouldFollow = true;
-                rope.StartPoint = grapple.transform;
                 return rope;
             }
         }
-        Debug.LogError("ROPEBRIDGECONTROLLER NULL DONDURDU");
         return null;
     }
     private void CheckSpawnCount(int spawnCount)

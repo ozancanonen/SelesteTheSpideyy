@@ -23,6 +23,7 @@ public class RopeBridge : MonoBehaviour
     Grapple grapple;
     public bool hasHolded = false;
     [SerializeField] float disableTime = 5f;
+    public bool canReturn = true;
     // Use this for initialization
     private void Awake()
     {
@@ -89,6 +90,7 @@ public class RopeBridge : MonoBehaviour
         PlayerController.checkSegmentLenght += SegmentLenght2;
         PlayerController.checkSegmentLenght += SegmentLenght3;
         PlayerController.checkSegmentLenght += SegmentLenght4;
+        StartPoint = grapple.transform;
     }
     private void SegmentLenght1(int number)
     {
